@@ -30,6 +30,7 @@ public class UserData extends RuData implements UserDataGateway
     parameters.put("password", user.getPassword());
     parameters.put("email", user.getEmail());
     parameters.put("registered", new Date());
+    parameters.put("driver", false);
 
     int returnKey;
 

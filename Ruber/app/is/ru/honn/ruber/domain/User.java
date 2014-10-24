@@ -11,6 +11,7 @@ public class User
   private String password;
   private String email;
   private Date registered;
+  private boolean driver;
 
   public User()
   {
@@ -25,6 +26,7 @@ public class User
     this.password = password;
     this.email = email;
     this.registered = registered;
+    this.driver = false;
   }
 
   public User(String username, String firstName, String lastName, String password, String email, Date registered)
@@ -35,6 +37,7 @@ public class User
     this.password = password;
     this.email = email;
     this.registered = registered;
+    this.driver = false;
   }
 
   public int getId()
