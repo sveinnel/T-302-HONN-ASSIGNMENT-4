@@ -1,5 +1,6 @@
 package is.ru.honn.ruber.users.data;
 
+import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.User;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UsernameExistsException;
@@ -9,10 +10,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class UserData extends RuData implements UserDataGateway
 {
@@ -64,4 +62,6 @@ public class UserData extends RuData implements UserDataGateway
     }
     return user;
   }
+
+
 }

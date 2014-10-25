@@ -26,6 +26,4 @@
         <constructor-arg index="0" ref="ridesDataGateway"/>
     </bean>
 
-
-
 </beans>

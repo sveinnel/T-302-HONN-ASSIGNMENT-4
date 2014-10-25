@@ -8,6 +8,7 @@
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.at("js/main.js")" type="text/javascript"></script>
     </head>
     <body>
         <div class="navbar navbar-default">
@@ -17,10 +18,10 @@
                     <ul class="nav navbar-nav">
                         @if(session.get("username")) {
                             <li>
-                                <a href="TODO">Get Driver top</a>
+                                <a href="TODO">Get Driver</a>
                             </li>
                             <li>
-                                <a href="@routes.LoginController.logout()">Logout top</a>
+                                <a href="@routes.LoginController.logout()">Logout</a>
                             </li>
                         } else {
                             <li class="@("active".when(nav == "signup"))">
@@ -52,7 +53,7 @@
 
             </div>
 
-            <footer>
+            <footer >
                 <p>
                     Ruber service
                 </p>

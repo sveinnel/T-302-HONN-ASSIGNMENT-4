@@ -26,7 +26,7 @@ public class SignupController extends UserController
   {
     Form<UserRegistration> filledForm = signupForm.bindFromRequest();
 
-    UserService service = (UserService) ctx.getBean("userService");
+    UserService service = (UserService) userCtx.getBean("userService");
 
     if (!"true".equals(filledForm.field("accept").value()))
     {

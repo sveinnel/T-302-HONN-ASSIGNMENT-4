@@ -27,8 +27,6 @@ public class RideRowMapper implements RowMapper<Trip> {
                 rs.getFloat("distance"),
                 rs.getBoolean("completed"),
                 rs.getInt("riderid")
-
-
         );
     }
 }

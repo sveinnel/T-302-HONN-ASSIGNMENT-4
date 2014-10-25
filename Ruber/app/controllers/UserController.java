@@ -7,5 +7,8 @@ import play.mvc.Controller;
 
 public class UserController extends Controller
 {
-  protected static ApplicationContext ctx = new FileSystemXmlApplicationContext("/conf/UserService.xml");
+    protected static ApplicationContext userCtx = new FileSystemXmlApplicationContext("/conf/UserService.xml");
+    protected static ApplicationContext ridesCtx = new FileSystemXmlApplicationContext("/conf/RidesService.xml");
+
+
 }

@@ -4,8 +4,6 @@ package controllers;
 import is.ru.honn.ruber.domain.User;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UserService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 import play.data.*;
 import play.mvc.*;
 
@@ -27,7 +25,7 @@ public class LoginController extends UserController
   {
     Form<User> filledForm = loginForm.bindFromRequest();
 
-    UserService service = (UserService) ctx.getBean("userService");
+    UserService service = (UserService) userCtx.getBean("userService");
 
     try
     {

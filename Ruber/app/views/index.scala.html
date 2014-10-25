@@ -10,7 +10,31 @@
 
         <h3>Good to see you again @{session.get("displayName")}!</h3>
 
-    } else {
+
+        <input class="btn btn-default" type="button" value="Get my trips" onclick="getRiderHistory()"/>
+
+        <h2>Trip history</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Request Time</th>
+                    <th>Product Id</th>
+                    <th>status</th>
+                    <th>distance</th>
+                    <th>start time</th>
+                    <th>end time</th>
+                    <th>startLongitude</th>
+                    <th>endLongitude</th>
+                    <th>startLatitude</th>
+                    <th>endLatitude</th>
+                    <th>riderId</th>
+                </tr>
+            </thead>
+            <tbody id="constructTripData">
+            </tbody>
+        </table>
+                    } else {
 
         <h3>Looks like you're new here!</h3>
         <p>

@@ -47,7 +47,6 @@ public class TripReader
     try
     {
       String jsonString = jsonRequest.sendGetRequest(url);
-        log.info("Jsonstring : \n" + jsonString );
       JSONObject jsonRoot = (JSONObject)jsonParser.parse(jsonString);
       JSONArray jsonHistory = (JSONArray)jsonRoot.get("history");
 
@@ -60,11 +59,9 @@ public class TripReader
         trip.setProductId(Integer.parseInt(jsonTrip.get("product_id").toString()));
         trip.setStatus(TripStatus.COMPLETED);
         trip.setDistance((Double)jsonTrip.get("distance"));
-        trip.setRequestTime(new Timestamp(Integer.parseInt(jsonTrip.get("request_time").toString()) * 1000L));
-        trip.setStartTime(new Timestamp(Integer.parseInt(jsonTrip.get("start_time").toString()) * 1000L));
-        trip.setEndTime(new Timestamp(Integer.parseInt(jsonTrip.get("end_time").toString()) * 1000L));
-        log.info(trip.toString());
-        log.info("\n");
+        trip.setRequestTime(new Timestamp(Long.parseLong(jsonTrip.get("request_time").toString()) * 1000L));
+        trip.setStartTime(new Timestamp(Long.parseLong(jsonTrip.get("start_time").toString()) * 1000L));
+        trip.setEndTime(new Timestamp(Long.parseLong(jsonTrip.get("end_time").toString()) * 1000L));
         handler.addTrip(trip);
       }
     }

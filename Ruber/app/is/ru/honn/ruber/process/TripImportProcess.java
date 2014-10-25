@@ -31,7 +31,6 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
     try
     {
         String importURL = getProcessContext().getImportURL();
-        log.info("IMPORT URL  " + importURL);
         reader.read(importURL);
 
     }
