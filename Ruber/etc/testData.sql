@@ -18,13 +18,15 @@ insert into ru_trips(
 requesttime,
 starttime,
 endtime,
-distance)
+distance,
+riderid)
 values (
-    2,
+    3,
     '1976-10-10 10:10',
     '1976-10-10 10:15',
     '1976-10-10 11:00',
-    66.0
+    66.0,
+    2
   )
 
 insert into ru_reviews(
@@ -36,7 +38,7 @@ insert into ru_reviews(
 values(
     2,
     1,
-    6,
+    7,
     'You talkin'' to me? You talkin'' to me? You talkin'' to me? Then who the hell else are you talking... you talking to me? Well I''m the only one here. Who the fuck do you think you''re talking to? Oh yeah? OK.'
   )
 

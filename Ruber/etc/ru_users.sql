@@ -1,55 +1,61 @@
-CREATE TABLE ru_users
-(
-  id int Identity (1, 1) primary key NOT NULL,
-  username nvarchar(256) unique NOT NULL,
+CREATE TABLE hshemile12.hshemile12.ru_users (
+  id int PRIMARY KEY NOT NULL identity (1,1),
+  username nvarchar(256) NOT NULL,
   firstname nvarchar(128),
   lastname nvarchar(128),
   password nvarchar(128),
   email nvarchar(256),
   registered datetime,
-  driver bit default 0
-)
+  driver bit DEFAULT ((0))
+);
 
-create table ru_price
-(
-  id int Identity (1, 1) primary key NOT NULL,
+
+
+CREATE TABLE hshemile12.hshemile12.ru_prices (
+  id int PRIMARY KEY NOT NULL identity (1,1),
   currencycode nvarchar(3),
-  lowestimate float ,
-  highestimate float,
-  surgemultiplayer float ,
-  finalpricce float
-)
+  lowestimate float(53),
+  highestimate float(53),
+  surgemultiplayer float(53),
+  finalprice float(53)
+);
 
-create table ru_product
-(
-  id int Identity (1, 1) primary key NOT NULL,
+CREATE TABLE hshemile12.hshemile12.ru_products (
+  id int PRIMARY KEY NOT NULL identity (1,1),
   description nvarchar(512),
   displayname nvarchar(128),
-  capacity int ,
+  capacity int,
   imageurl nvarchar(512),
-  driverid int references ru_users(id),
-  priceid int references ru_price(id)
-)
+  driverid int,
+  priceid int,
+  FOREIGN KEY (driverid) REFERENCES ru_users (id),
+  FOREIGN KEY (priceid) REFERENCES ru_prices (id)
+);
 
-create table ru_ride
-(
-  id int Identity (1, 1) primary key NOT NULL,
-  productid int references ru_product(id),
+CREATE TABLE hshemile12.hshemile12.ru_trips (
+  id int PRIMARY KEY NOT NULL identity (1,1),
+  productid int,
   requesttime datetime,
   starttime datetime,
   endtime datetime,
-  startlongtitude float,
-  endlongtitude float,
-  startlatitude float,
-  endlatitude float,
-  distance float
-)
+  startlongitude float(53),
+  endlongitude float(53),
+  startlatitude float(53),
+  endlatitude float(53),
+  distance float(53),
+  completed bit DEFAULT ((0)),
+  riderid int,
+  FOREIGN KEY (productid) REFERENCES ru_products (id),
+  FOREIGN KEY (riderid) REFERENCES ru_users (id)
+);
 
-create table ru_review
-(
-  id int Identity (1, 1) primary key NOT NULL,
-  reviwerid int references ru_users(id),
-  reviewedid int references ru_users(id),
-  rideid int references ru_ride(id),
-  comment nvarchar(512)
-)
+CREATE TABLE hshemile12.hshemile12.ru_reviews (
+  id int PRIMARY KEY NOT NULL identity (1,1),
+  reviwerid int,
+  reviewedid int,
+  tripid int,
+  comment nvarchar(512),
+  FOREIGN KEY (reviwerid) REFERENCES ru_users (id),
+  FOREIGN KEY (reviewedid) REFERENCES ru_users (id),
+  FOREIGN KEY (tripid) REFERENCES ru_trips (id)
+);
