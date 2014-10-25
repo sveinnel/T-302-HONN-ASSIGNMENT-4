@@ -61,7 +61,7 @@ public class History
 
   public List<Trip> getTrips()
   {
-    return history;
+    return history.subList(offset,offset + limit);
   }
 }
 
