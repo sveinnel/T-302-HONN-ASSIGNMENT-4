@@ -52,11 +52,13 @@ CREATE TABLE hshemile12.hshemile12.ru_trips (
 CREATE TABLE hshemile12.hshemile12.ru_reviews (
   id int PRIMARY KEY NOT NULL identity (1,1),
   reviwerid int,
-  reviewedid int,
+  productid int,
   tripid int,
+  rating int,
   comment nvarchar(512),
+  add constraint ru_reviews check (rating >-1 and rating < 6)
   FOREIGN KEY (reviwerid) REFERENCES ru_users (id),
-  FOREIGN KEY (reviewedid) REFERENCES ru_users (id),
+  FOREIGN KEY (productid) REFERENCES ru_product (id),
   FOREIGN KEY (tripid) REFERENCES ru_trips (id)
 );
 
