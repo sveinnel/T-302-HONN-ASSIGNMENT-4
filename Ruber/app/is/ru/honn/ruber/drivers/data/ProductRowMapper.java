@@ -1,7 +1,11 @@
 package is.ru.honn.ruber.drivers.data;
 
+import controllers.UserController;
+import is.ru.honn.ruber.domain.Price;
 import is.ru.honn.ruber.domain.Product;
 
+import is.ru.honn.ruber.domain.User;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

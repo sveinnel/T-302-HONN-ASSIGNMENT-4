@@ -7,5 +7,5 @@ import java.util.List;
 public interface RidesService
 {
   public void addTrip(Trip trip);
-  public History getTrips(int riderId, int offset, int limit);
+  public History getTrips(int riderId);
 }
