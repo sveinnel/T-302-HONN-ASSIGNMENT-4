@@ -1,6 +1,5 @@
 package controllers;
 import is.ru.honn.ruber.drivers.service.DriverService;
-import is.ru.honn.ruber.rides.RidesService;
 import is.ru.honn.ruber.users.service.UserService;
 import play.data.*;
 import play.mvc.*;
