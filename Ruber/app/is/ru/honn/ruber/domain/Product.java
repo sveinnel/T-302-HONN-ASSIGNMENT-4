@@ -4,69 +4,105 @@ public class Product
 {
   protected int id;
   protected String description;
-  protected String display_name;
+  protected String displayName;
   protected int capacity;
   protected String image;
+  protected int driverId;
+  protected int priceId;
 
-  public int getId()
-  {
-    return id;
-  }
+    public Product(int id, String description, String displayName, int capacity, String image, int driverId, int priceId)
+    {
+        this.id = id;
+        this.description = description;
+        this.displayName = displayName;
+        this.capacity = capacity;
+        this.image = image;
+        this.driverId = driverId;
+        this.priceId = priceId;
+    }
 
-  public void setId(int id)
-  {
-    this.id = id;
-  }
 
-  public String getDescription()
-  {
-    return description;
-  }
+    public int getId()
+    {
+        return id;
+    }
 
-  public void setDescription(String description)
-  {
-    this.description = description;
-  }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-  public String getDisplay_name()
-  {
-    return display_name;
-  }
+    public String getDescription()
+    {
+        return description;
+    }
 
-  public void setDisplay_name(String display_name)
-  {
-    this.display_name = display_name;
-  }
+    public void setDescription(String description)
+    {
+        this.description = description;
+    }
 
-  public int getCapacity()
-  {
-    return capacity;
-  }
+    public String getDisplayName()
+    {
+        return displayName;
+    }
 
-  public void setCapacity(int capacity)
-  {
-    this.capacity = capacity;
-  }
+    public void setDisplayName(String displayName)
+    {
+        this.displayName = displayName;
+    }
 
-  public String getImage()
-  {
-    return image;
-  }
+    public int getCapacity()
+    {
+        return capacity;
+    }
 
-  public void setImage(String image)
-  {
-    this.image = image;
-  }
+    public void setCapacity(int capacity)
+    {
+        this.capacity = capacity;
+    }
 
-  @Override
-  public String toString()
-  {
-    return "Product{" +
-        "product_id='" + id + '\'' +
-        ", description='" + description + '\'' +
-        ", display_name='" + display_name + '\'' +
-        ", capacity=" + capacity +
-        ", image='" + image + '\'' +
-        '}';
-  }
+    public String getImage()
+    {
+        return image;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
+    }
+
+    public int getDriverId()
+    {
+        return driverId;
+    }
+
+    public void setDriverId(int driverId)
+    {
+        this.driverId = driverId;
+    }
+
+    public int getPriceId()
+    {
+        return priceId;
+    }
+
+    public void setPriceId(int priceId)
+    {
+        this.priceId = priceId;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Product{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", capacity=" + capacity +
+                ", image='" + image + '\'' +
+                ", driverId=" + driverId +
+                ", priceId=" + priceId +
+                '}';
+    }
 }
