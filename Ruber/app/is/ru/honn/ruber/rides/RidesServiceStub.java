@@ -11,13 +11,13 @@ public class RidesServiceStub implements RidesService
   List<Trip> theTrips = new ArrayList<Trip>();
 
   @Override
-  public void addTrip(int userId, Trip trip)
+  public void addTrip(Trip trip)
   {
     theTrips.add(trip);
   }
 
   @Override
-  public List<Trip> getTrip(int userId)
+  public List<Trip> getTrips(int userId)
   {
     return theTrips;
   }

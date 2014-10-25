@@ -19,7 +19,7 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
   @Override
   public void beforeProcess()
   {
-    ApplicationContext appCtx = new FileSystemXmlApplicationContext("RidesService.xml");
+    ApplicationContext appCtx = new FileSystemXmlApplicationContext("conf/RidesService.xml");
     ridesService = (RidesService)appCtx.getBean("RidesService");
     reader.setHandler(this);
   }
@@ -30,7 +30,10 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
     List<Trip> trips = new ArrayList();
     try
     {
-      reader.read(getProcessContext().getImportURL());
+        String importURL = getProcessContext().getImportURL();
+        log.info("IMPORT URL  " + importURL);
+        reader.read(importURL);
+
     }
     catch (ProcessException e)
     {
@@ -43,7 +46,7 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
   @Override
   public void afterProcess()
   {
-    List<Trip> trips = ridesService.getTrip(1);
+    List<Trip> trips = ridesService.getTrips(1);
     for(Trip trip : trips)
     {
       System.out.println(trip);
@@ -53,6 +56,6 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
   @Override
   public void addTrip(Trip trip)
   {
-    ridesService.addTrip(1, trip);
+    ridesService.addTrip( trip);
   }
 }

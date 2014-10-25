@@ -23,7 +23,7 @@ public class UserData extends RuData implements UserDataGateway
             .withTableName("ru_users")
             .usingGeneratedKeyColumns("id");
 
-    Map<String, Object> parameters = new HashMap<String, Object>(6);
+    Map<String, Object> parameters = new HashMap<String, Object>(7);
     parameters.put("username", user.getUsername());
     parameters.put("firstname", user.getFirstName());
     parameters.put("lastname", user.getLastName());
