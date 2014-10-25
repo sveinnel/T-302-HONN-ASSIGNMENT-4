@@ -1,9 +1,8 @@
-package is.ru.honn.ruber.rides;
+package is.ru.honn.ruber.rides.service;
 
+import is.ru.honn.ruber.domain.History;
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.rides.data.RideDataGateway;
-
-import java.util.List;
 
 /**
  * Created by emil on 24.10.2014.
@@ -22,7 +21,7 @@ public class RideServiceData implements RidesService {
     }
 
     @Override
-    public List<Trip> getTrips(int userId) {
-        return tripDataGateway.getTrips(userId);
+    public History getTrips(int riderId) {
+        return tripDataGateway.getTrips(riderId, offset, limit);
     }
 }

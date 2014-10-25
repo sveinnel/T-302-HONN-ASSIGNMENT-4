@@ -22,7 +22,7 @@
     <bean id="ridesDataGateway" class="is.ru.honn.ruber.rides.data.RideData">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-    <bean id="RidesService" class="is.ru.honn.ruber.rides.RideServiceData">
+    <bean id="RidesService" class="is.ru.honn.ruber.rides.service.RideServiceData">
         <constructor-arg index="0" ref="ridesDataGateway"/>
     </bean>
 

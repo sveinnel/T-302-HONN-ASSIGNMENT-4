@@ -1,4 +1,4 @@
-package is.ru.honn.ruber.rides;
+package is.ru.honn.ruber.rides.service;
 
 /**
  * Created by emil on 24.10.2014.
