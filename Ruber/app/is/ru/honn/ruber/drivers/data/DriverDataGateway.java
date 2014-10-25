@@ -1,6 +1,7 @@
 package is.ru.honn.ruber.drivers.data;
 
 import is.ru.honn.ruber.domain.Product;
+import is.ru.honn.ruber.domain.Review;
 import is.ruframework.data.RuDataAccess;
 
 import java.util.List;
@@ -11,4 +12,5 @@ import java.util.List;
 public interface DriverDataGateway extends RuDataAccess
 {
     public List<Product> getAllProducts();
+    public List<Review> getReviewsByProductId(int productId);
 }

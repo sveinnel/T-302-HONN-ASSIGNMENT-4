@@ -1,6 +1,7 @@
 package is.ru.honn.ruber.drivers.service;
 
 import is.ru.honn.ruber.domain.Product;
+import is.ru.honn.ruber.domain.Review;
 import is.ru.honn.ruber.drivers.data.DriverDataGateway;
 import is.ru.honn.ruber.users.service.UserService;
 
@@ -26,5 +27,11 @@ public class DriverServiceData implements DriverService
     public List<Product> getAllProducts()
     {
         return driverDataGateway.getAllProducts();
+    }
+
+    @Override
+    public List<Review> getReviewsByProductId(int productId)
+    {
+        return driverDataGateway.getReviewsByProductId(productId);
     }
 }

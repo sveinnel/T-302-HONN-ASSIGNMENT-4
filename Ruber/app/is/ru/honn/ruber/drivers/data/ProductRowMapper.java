@@ -11,7 +11,7 @@ import java.sql.SQLException;
 /**
  * Created by sveinn on 25.10.2014.
  */
-public class DriverRowMapper implements RowMapper<Product>
+public class ProductRowMapper implements RowMapper<Product>
 {
 
     @Override
