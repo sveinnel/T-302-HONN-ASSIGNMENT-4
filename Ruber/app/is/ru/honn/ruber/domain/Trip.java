@@ -1,16 +1,17 @@
 package is.ru.honn.ruber.domain;
 
-import java.sql.Date;
+
+import java.sql.Timestamp;
 
 public class Trip
 {
     protected int id;
-    protected Date requestTime;
+    protected Timestamp requestTime;
     protected int productId;
     protected TripStatus status;
     protected double distance;
-    protected Date startTime;
-    protected Date endTime;
+    protected Timestamp startTime;
+    protected Timestamp endTime;
     protected double startLongitude;
     protected double endLongitude;
     protected double startLatitude;
@@ -22,7 +23,7 @@ public class Trip
 
     }
 
-    public Trip(int id, Date requestTime, int productId, TripStatus status, double distance, Date startTime, Date endTime)
+    public Trip(int id, Timestamp requestTime, int productId, TripStatus status, double distance, Timestamp startTime, Timestamp endTime)
     {
         this.id = id;
         this.requestTime = requestTime;
@@ -33,7 +34,7 @@ public class Trip
         this.endTime = endTime;
     }
 
-    public Trip(Date requestTime, int productId, TripStatus status, double distance, Date startTime, Date endTime)
+    public Trip(Timestamp requestTime, int productId, TripStatus status, double distance, Timestamp startTime, Timestamp endTime)
     {
         this.requestTime = requestTime;
         this.productId = productId;
@@ -44,7 +45,7 @@ public class Trip
     }
 
     //TODO: implement Product getter from DB based on product id
-    public Trip(int id, int productId, Date requestTime, Date startTime, Date endTime, float startlongitude, float endLongiTude, float startLatitude, float endLatitude, float distance, boolean completed, int riderId) {
+    public Trip(int id, int productId, Timestamp requestTime, Timestamp startTime, Timestamp endTime, float startlongitude, float endLongiTude, float startLatitude, float endLatitude, float distance, boolean completed, int riderId) {
         this.id = id;
         this.requestTime = requestTime;
         this.productId = productId;
@@ -66,11 +67,11 @@ public class Trip
         this.id = id;
     }
 
-    public Date getRequestTime() {
+    public Timestamp getRequestTime() {
         return requestTime;
     }
 
-    public void setRequestTime(Date requestTime) {
+    public void setRequestTime(Timestamp requestTime) {
         this.requestTime = requestTime;
     }
 
@@ -98,19 +99,19 @@ public class Trip
         this.distance = distance;
     }
 
-    public Date getStartTime() {
+    public Timestamp getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(Timestamp startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public Timestamp getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(Timestamp endTime) {
         this.endTime = endTime;
     }
 

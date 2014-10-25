@@ -10,8 +10,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import java.sql.*;
-import java.util.*;
+import java.text.SimpleDateFormat;
+
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by emil on 24.10.2014.
  */
@@ -52,14 +58,10 @@ public class RideData extends RuData implements RideDataGateway {
 
     @Override
     public List<Trip> getTrips(int riderId) {
-        //Collection<String> trips;
+
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
-        /**
-         * new shit
-         */
 
-
-        List<Trip> trips = new ArrayList<Trip>();
+        List<Trip> trips = new ArrayList<>();
 
         List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from ru_trips where riderId = '" + riderId + "'");
 
@@ -68,27 +70,15 @@ public class RideData extends RuData implements RideDataGateway {
             t.setId((Integer)a.get("id"));
             t.setProductId(Integer.parseInt(a.get("productid").toString()));
             t.setStartLongitude(Double.parseDouble(a.get("startlongitude").toString()));
-
             t.setStartLongitude(Double.parseDouble(a.get("endlongitude").toString()));
-
             t.setStartLongitude(Double.parseDouble(a.get("startlatitude").toString()));
-
             t.setStartLongitude(Double.parseDouble(a.get("endlatitude").toString()));
             t.setDistance(Double.parseDouble(a.get("distance").toString()));
             t.setRiderId(Integer.parseInt(a.get("riderid").toString()));
-            String completed = a.get("completed").toString();
-            t.setStatus(completed == "completed"? TripStatus.COMPLETED:null);
-
-
-            long l= Long.parseLong(a.get("requesttime").toString());
-
-            t.setRequestTime(new Date(l*1000L));
-            log.info();
-            //t.setStartTime(new Date(Long.parseLong(a.get("starttime").toString())*1000L));
-
-            //t.setEndTime(new Date(Long.parseLong(a.get("endtime").toString())*1000L));
-
-
+            t.setStatus(Boolean.valueOf(a.get("completed").toString()) ? TripStatus.COMPLETED :null);
+            t.setRequestTime(Timestamp.valueOf(a.get("requesttime").toString()));
+            t.setStartTime(Timestamp.valueOf(a.get("starttime").toString()));
+            t.setEndTime(Timestamp.valueOf(a.get("endtime").toString()));
             trips.add(t);
         }
 

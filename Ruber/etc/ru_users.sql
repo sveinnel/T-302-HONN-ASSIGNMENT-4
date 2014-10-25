@@ -59,3 +59,6 @@ CREATE TABLE hshemile12.hshemile12.ru_reviews (
   FOREIGN KEY (reviewedid) REFERENCES ru_users (id),
   FOREIGN KEY (tripid) REFERENCES ru_trips (id)
 );
+
+
+select * from ru_trips

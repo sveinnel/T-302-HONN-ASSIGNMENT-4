@@ -17,9 +17,9 @@ public class RideRowMapper implements RowMapper<Trip> {
         return new Trip(
                 rs.getInt("id"),
                 rs.getInt("productid"),
-                rs.getDate("requesttime"),
-                rs.getDate("starttime"),
-                rs.getDate("endtime"),
+                rs.getTimestamp("requesttime"),
+                rs.getTimestamp("starttime"),
+                rs.getTimestamp("endtime"),
                 rs.getFloat("startlongitude"),
                 rs.getFloat("endlongitude"),
                 rs.getFloat("startlatitude"),

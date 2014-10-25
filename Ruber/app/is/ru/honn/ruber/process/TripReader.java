@@ -11,6 +11,7 @@ import org.json.simple.parser.JSONParser;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.logging.Logger;
 
 public class TripReader
@@ -59,9 +60,9 @@ public class TripReader
         trip.setProductId(Integer.parseInt(jsonTrip.get("product_id").toString()));
         trip.setStatus(TripStatus.COMPLETED);
         trip.setDistance((Double)jsonTrip.get("distance"));
-        trip.setRequestTime(new Date(Integer.parseInt(jsonTrip.get("request_time").toString()) * 1000));
-        trip.setStartTime(new Date(Integer.parseInt(jsonTrip.get("start_time").toString()) * 1000));
-        trip.setEndTime(new Date(Integer.parseInt(jsonTrip.get("end_time").toString()) * 1000));
+        trip.setRequestTime(new Timestamp(Integer.parseInt(jsonTrip.get("request_time").toString()) * 1000L));
+        trip.setStartTime(new Timestamp(Integer.parseInt(jsonTrip.get("start_time").toString()) * 1000L));
+        trip.setEndTime(new Timestamp(Integer.parseInt(jsonTrip.get("end_time").toString()) * 1000L));
         log.info(trip.toString());
         log.info("\n");
         handler.addTrip(trip);
