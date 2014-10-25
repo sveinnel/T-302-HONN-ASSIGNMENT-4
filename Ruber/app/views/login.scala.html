@@ -3,10 +3,10 @@
 @import helper._
 @import twitterBootstrap._
 
-@main(title = "Login", nav = "login") {
+@main(title = "Ruber", nav = "login") {
     @helper.form(action = routes.LoginController.login) {
         <fieldset>
-            <legend>Login details</legend>
+            <legend>Log in</legend>
             @inputText(
                 signupForm("username"),
                 '_label -> "Username",

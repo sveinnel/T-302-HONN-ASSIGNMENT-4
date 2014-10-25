@@ -45,4 +45,25 @@ function constructRiderHistory(arr) {
     return out;
 }
 
+function getProducts(){
+    console.log("Clickes a button ");
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/products";
 
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send(null);
+    xmlhttp.onreadystatechange = function() {
+        var constructRiderTable =  document.getElementById("constructTripData");
+        if (xmlhttp.readyState == 4) {
+            if ( xmlhttp.status == 200) {
+                var obj = (JSON.parse(xmlhttp.responseText));
+                console.log(JSON.stringify(obj, null,4));
+
+
+            }
+            else{
+                alert("Error ->" + xmlhttp.responseText);
+            }
+        }
+    };
+}

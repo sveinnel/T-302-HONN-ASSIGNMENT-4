@@ -63,7 +63,8 @@ public class RideData extends RuData implements RideDataGateway {
 
         List<Trip> trips = new ArrayList<>();
 
-        List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from ru_trips where riderId = '" + riderId + "'");
+        List<Map<String, Object>> rows = jdbcTemplate.queryForList(
+                "select * from ru_trips where riderId = '" + riderId + "' AND completed = 1" );
 
         for(Map a : rows){
             Trip t = new Trip();

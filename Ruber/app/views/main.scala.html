@@ -1,4 +1,4 @@
-@(title: String = "Welcome", nav: String = "")(content: Html)
+@(title: String = "Ruber", nav: String = "")(content: Html)
 
 <!DOCTYPE html>
 
@@ -6,6 +6,7 @@
     <head>
         <title>Ruber</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("css/custom.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("js/main.js")" type="text/javascript"></script>
@@ -14,22 +15,19 @@
         <div class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="@routes.Application.index()">@title</a>
+                    <a class="navbar-brand" href="@routes.Application.index()">Ruber</a>
                     <ul class="nav navbar-nav">
                         @if(session.get("username")) {
-                            <li>
-                                <a href="TODO">Get Driver</a>
-                            </li>
                             <li>
                                 <a href="@routes.LoginController.logout()">Logout</a>
                             </li>
                         } else {
-                            <li class="@("active".when(nav == "signup"))">
+                           <!-- <li class="@("active".when(nav == "signup"))">
                                 <a href="@routes.SignupController.blank()">Sign up bot</a>
                             </li>
                             <li class="@("active".when(nav == "login"))">
                                 <a href="@routes.LoginController.login()">Login bot</a>
-                            </li>
+                            </li>  -->
                         }
                     </ul>
                 </div>
@@ -40,10 +38,11 @@
         <div class="container">
 
             <div class="content">
-
-                <div class="page-header">
-                    <h1>@title</h1>
-                </div>
+                @if(session.get("username")){
+                    <div class="page-header">
+                        <h1>@title</h1>
+                    </div>
+                }
 
                 <div class="row">
                     <div class="span14">
@@ -53,13 +52,11 @@
 
             </div>
 
-            <footer >
-                <p>
-                    Ruber service
-                </p>
-            </footer>
-
         </div>
-
+        <div class="footer custFooter">
+            <div class="container" >
+                <span>Ruber service</span>
+            </div>
+        </div>
     </body>
 </html>
