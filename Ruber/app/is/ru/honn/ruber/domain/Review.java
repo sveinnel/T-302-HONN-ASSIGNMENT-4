@@ -30,6 +30,11 @@ public class Review
         this.comment = comment;
     }
 
+    public Review()
+    {
+
+    }
+
     public int getId()
     {
         return id;

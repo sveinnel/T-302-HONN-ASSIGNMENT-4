@@ -2,6 +2,7 @@ package is.ru.honn.ruber.drivers.service;
 
 import is.ru.honn.ruber.domain.Product;
 import is.ru.honn.ruber.domain.Review;
+import is.ru.honn.ruber.drivers.data.AddReviewException;
 import is.ru.honn.ruber.drivers.data.DriverDataGateway;
 import is.ru.honn.ruber.users.service.UserService;
 
@@ -33,5 +34,11 @@ public class DriverServiceData implements DriverService
     public List<Review> getReviewsByProductId(int productId)
     {
         return driverDataGateway.getReviewsByProductId(productId);
+    }
+
+    @Override
+    public void addReview(int productId, int riderId, int rating, int tripId, String comment) throws AddReviewException
+    {
+        driverDataGateway.addReview(productId,riderId,rating,tripId,comment);
     }
 }
