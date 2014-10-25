@@ -45,7 +45,7 @@ public class TripImportProcess extends RuAbstractProcess implements TripHandler
   @Override
   public void afterProcess()
   {
-    List<Trip> trips = ridesService.getTrips(1);
+    List<Trip> trips = ridesService.getTrips(1).getTrips();
     for(Trip trip : trips)
     {
       System.out.println(trip);

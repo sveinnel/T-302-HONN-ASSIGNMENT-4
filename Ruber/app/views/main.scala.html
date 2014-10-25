@@ -17,18 +17,18 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="@routes.Application.index()">Ruber</a>
                     <ul class="nav navbar-nav">
-                        @if(session.get("username")) {
-                            <li>
-                                <a href="@routes.LoginController.logout()">Logout</a>
-                            </li>
-                        } else {
-                           <!-- <li class="@("active".when(nav == "signup"))">
-                                <a href="@routes.SignupController.blank()">Sign up bot</a>
-                            </li>
-                            <li class="@("active".when(nav == "login"))">
-                                <a href="@routes.LoginController.login()">Login bot</a>
-                            </li>  -->
-                        }
+                    @if(session.get("username")) {
+                        <li>
+                            <a href="@routes.LoginController.logout()">Logout</a>
+                        </li>
+                    } else {
+                            <!-- <li class="@("active".when(nav == "signup"))">
+                        <a href="@routes.SignupController.blank()">Sign up bot</a>
+                        </li>
+                        <li class="@("active".when(nav == "login"))">
+                            <a href="@routes.LoginController.login()">Login bot</a>
+                        </li>  -->
+                    }
                     </ul>
                 </div>
             </div>
@@ -36,23 +36,23 @@
         </div>
 
         <div class="container">
+            <div class="splash">
+                <div class="content">
+                    @if(session.get("username")){
+                        <div class="page-header">
+                            <h1>@title</h1>
+                        </div>
+                    }
 
-            <div class="content">
-                @if(session.get("username")){
-                    <div class="page-header">
-                        <h1>@title</h1>
-                    </div>
-                }
-
-                <div class="row">
-                    <div class="span14">
-                    @content
+                    <div class="row">
+                        <div class="span14">
+                        @content
+                        </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
+
         <div class="footer custFooter">
             <div class="container" >
                 <span>Ruber service</span>
