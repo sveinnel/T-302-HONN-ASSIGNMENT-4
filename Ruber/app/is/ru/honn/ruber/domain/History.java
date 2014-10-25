@@ -10,24 +10,17 @@ public class History
   protected int count;
   protected List<Trip> history = new ArrayList<Trip>();
 
-  public History(int offset, int limit, int count)
+  public History(int offset, int limit)
   {
     this.offset = offset;
     this.limit = limit;
-    this.count = count;
+    this.count = 0;
   }
 
-  public History(int offset, int limit, int count, List<Trip> history)
-  {
-    this.offset = offset;
-    this.limit = limit;
-    this.count = count;
-    this.history = history;
-  }
 
   public History()
   {
-
+    this.count = 0;
   }
 
   public int getOffset()
@@ -62,6 +55,7 @@ public class History
 
   public void addTrip(Trip trip)
   {
+    count++;
     history.add(trip);
   }
 

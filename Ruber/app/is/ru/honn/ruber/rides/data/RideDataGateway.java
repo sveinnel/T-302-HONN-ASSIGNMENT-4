@@ -1,5 +1,6 @@
 package is.ru.honn.ruber.rides.data;
 
+import is.ru.honn.ruber.domain.History;
 import is.ru.honn.ruber.domain.Trip;
 import is.ruframework.data.RuDataAccess;
 
@@ -10,5 +11,6 @@ import java.util.List;
  */
 public interface RideDataGateway extends RuDataAccess {
     public int addTrip(Trip trip);
-    List<Trip> getTrips(int userId);
+    History getTrips(int riderId, int offset, int limit);
+
 }

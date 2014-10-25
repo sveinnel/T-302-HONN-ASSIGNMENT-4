@@ -1,19 +1,16 @@
 package is.ru.honn.ruber.rides.data;
 
+import is.ru.honn.ruber.domain.History;
 import is.ru.honn.ruber.domain.Trip;
 import is.ru.honn.ruber.domain.TripStatus;
-import is.ru.honn.ruber.rides.RideInsertDatabaseExeption;
+import is.ru.honn.ruber.rides.service.RideInsertDatabaseExeption;
 import is.ruframework.data.RuData;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import java.sql.*;
-import java.text.SimpleDateFormat;
 
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,11 +54,10 @@ public class RideData extends RuData implements RideDataGateway {
     }
 
     @Override
-    public List<Trip> getTrips(int riderId) {
+    public History getTrips(int riderId, int offset,int limit) {
 
         JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
-
-        List<Trip> trips = new ArrayList<>();
+        History history = new History(offset,limit);
 
         List<Map<String, Object>> rows = jdbcTemplate.queryForList("select * from ru_trips where riderId = '" + riderId + "'");
 
@@ -79,10 +75,10 @@ public class RideData extends RuData implements RideDataGateway {
             t.setRequestTime(Timestamp.valueOf(a.get("requesttime").toString()));
             t.setStartTime(Timestamp.valueOf(a.get("starttime").toString()));
             t.setEndTime(Timestamp.valueOf(a.get("endtime").toString()));
-            trips.add(t);
+            history.addTrip(t);
         }
 
-        return trips;
+        return history;
     }
 
 }

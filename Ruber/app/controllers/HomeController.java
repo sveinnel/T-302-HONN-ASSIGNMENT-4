@@ -1,10 +1,8 @@
 package controllers;
 
 import is.ru.honn.ruber.domain.User;
-import is.ru.honn.ruber.rides.RidesService;
+import is.ru.honn.ruber.rides.service.RidesService;
 import is.ru.honn.ruber.users.service.UserService;
-import play.Logger;
-import play.api.Play;
 import play.mvc.*;
 
 import static play.libs.Json.toJson;
