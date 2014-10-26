@@ -13,7 +13,17 @@ public class User
   private Date registered;
   private boolean driver;
 
-  public User()
+    public boolean isDriver()
+    {
+        return driver;
+    }
+
+    public void setDriver(boolean driver)
+    {
+        this.driver = driver;
+    }
+
+    public User()
   {
   }
 

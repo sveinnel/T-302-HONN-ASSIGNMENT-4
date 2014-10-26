@@ -1,4 +1,5 @@
 package controllers;
+import com.fasterxml.jackson.databind.JsonNode;
 import is.ru.honn.ruber.domain.dto.ReviewDTO;
 import is.ru.honn.ruber.domain.pojo.Product;
 import is.ru.honn.ruber.domain.dto.ProductDTO;
@@ -17,11 +18,11 @@ import static play.libs.Json.toJson;
  */
 public class DriverController extends UserController {
 
+    private static DriverService driverService = (DriverService) driverCtx.getBean("driverService");
+    private static UserService userService = (UserService) userCtx.getBean("userService");
 
     public static Result getAllProducts()
     {
-        DriverService driverService = (DriverService) driverCtx.getBean("driverService");
-        UserService userService = (UserService) userCtx.getBean("userService");
         List<ProductDTO> products = new ArrayList<>();
         try
         {
@@ -46,8 +47,7 @@ public class DriverController extends UserController {
     }
     public static Result getReviwsByProductId(int id)
     {
-        DriverService driverService = (DriverService) driverCtx.getBean("driverService");
-        UserService userService = (UserService) userCtx.getBean("userService");
+
         List<ReviewDTO> reviews = new ArrayList<>();
 
         try
@@ -68,6 +68,48 @@ public class DriverController extends UserController {
         catch (Exception e)
         {
             return notFound(e.getMessage());
+        }
+    }
+    public static Result  addReview()
+    {
+        JsonNode json = request().body().asJson();
+        if(json == null)
+        {
+            return badRequest("Expecting Json data");
+        }
+        else
+        {
+            int productId;
+            int riderId;
+            int rating;
+            String comment;
+            Review review;
+            try
+            {
+                productId = json.findPath("productId").asInt();
+                riderId = json.findPath("riderId").asInt();
+                rating = json.findPath("riderId").asInt();
+                comment = json.findPath("comment").toString();
+            }
+            catch (Exception e)
+            {
+                return badRequest("Error in Json data" + e.getMessage());
+            }
+            try
+            {
+                review = driverService.addReview(productId, riderId, rating, comment);
+            }
+            catch (Exception e)
+            {
+                return badRequest("Error in request" + e.getMessage());
+            }
+            return ok(toJson(new ReviewDTO(
+                    review.getId(),
+                    userService.getUserById(review.getReviewerId()),
+                    driverService.getProductById(review.getProductId()),
+                    review.getRating(),
+                    review.getComment()
+            )));
         }
     }
 }

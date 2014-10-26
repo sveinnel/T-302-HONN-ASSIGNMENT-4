@@ -16,6 +16,6 @@ public interface DriverService
     public List<Product> getAllProducts();
     public Product getProductById(int id);
     public List<Review> getReviewsByProductId(int productId);
-    public void addReview(int productId, int riderId, int rate, String comment) throws AddReviewException;
+    public Review addReview(int productId, int riderId, int rate, String comment) throws AddReviewException;
     public Price getPriceById(int id) throws PriceNotFoundException;
 }
