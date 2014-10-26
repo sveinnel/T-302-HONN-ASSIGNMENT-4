@@ -1,8 +1,8 @@
 package is.ru.honn.ruber.rides.data;
 
-import is.ru.honn.ruber.domain.History;
-import is.ru.honn.ruber.domain.Trip;
-import is.ru.honn.ruber.domain.TripStatus;
+import is.ru.honn.ruber.domain.pojo.History;
+import is.ru.honn.ruber.domain.pojo.Trip;
+import is.ru.honn.ruber.domain.pojo.TripStatus;
 import is.ru.honn.ruber.rides.service.RideInsertDatabaseExeption;
 import is.ruframework.data.RuData;
 import org.springframework.dao.DataIntegrityViolationException;

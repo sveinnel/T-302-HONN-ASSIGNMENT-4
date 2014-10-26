@@ -1,4 +1,4 @@
-package is.ru.honn.ruber.domain;
+package is.ru.honn.ruber.domain.pojo;
 
 
 import java.sql.Timestamp;

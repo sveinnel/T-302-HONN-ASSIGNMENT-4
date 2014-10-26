@@ -1,6 +1,6 @@
 package is.ru.honn.ruber.users.data;
 
-import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.domain.pojo.User;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,9 +1,11 @@
 package is.ru.honn.ruber.drivers.service;
 
-import is.ru.honn.ruber.domain.Product;
-import is.ru.honn.ruber.domain.Review;
+import is.ru.honn.ruber.domain.pojo.Price;
+import is.ru.honn.ruber.domain.pojo.Product;
+import is.ru.honn.ruber.domain.pojo.Review;
 import is.ru.honn.ruber.drivers.data.AddReviewException;
 import is.ru.honn.ruber.drivers.data.DriverDataGateway;
+import is.ru.honn.ruber.drivers.data.PriceNotFoundException;
 import is.ru.honn.ruber.users.service.UserService;
 
 import java.util.List;
@@ -31,6 +33,12 @@ public class DriverServiceData implements DriverService
     }
 
     @Override
+    public Product getProductById(int id)
+    {
+        return null;
+    }
+
+    @Override
     public List<Review> getReviewsByProductId(int productId)
     {
         return driverDataGateway.getReviewsByProductId(productId);
@@ -40,5 +48,17 @@ public class DriverServiceData implements DriverService
     public void addReview(int productId, int riderId, int rating, int tripId, String comment) throws AddReviewException
     {
         driverDataGateway.addReview(productId,riderId,rating,tripId,comment);
+    }
+
+    @Override
+    public Price getPriceById(int id) throws PriceNotFoundException
+    {
+        try
+        {
+            return driverDataGateway.getPriceById(id);
+        } catch (PriceNotFoundException e)
+        {
+            throw e;
+        }
     }
 }

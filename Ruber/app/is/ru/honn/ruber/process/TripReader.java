@@ -1,8 +1,8 @@
 package is.ru.honn.ruber.process;
 
 
-import is.ru.honn.ruber.domain.Trip;
-import is.ru.honn.ruber.domain.TripStatus;
+import is.ru.honn.ruber.domain.pojo.Trip;
+import is.ru.honn.ruber.domain.pojo.TripStatus;
 import is.ruframework.http.SimpleHttpRequest;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;

@@ -90,6 +90,7 @@ function getReviewsByProductId(){
             }
             else{
                 alert("Error ->" + xmlhttp.responseText);
+                console.log(xmlhttp.responseText)
             }
         }
     };

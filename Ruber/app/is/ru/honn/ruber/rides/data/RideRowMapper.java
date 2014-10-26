@@ -1,6 +1,6 @@
 package is.ru.honn.ruber.rides.data;
 
-import is.ru.honn.ruber.domain.Trip;
+import is.ru.honn.ruber.domain.pojo.Trip;
 
 import org.springframework.jdbc.core.RowMapper;
 

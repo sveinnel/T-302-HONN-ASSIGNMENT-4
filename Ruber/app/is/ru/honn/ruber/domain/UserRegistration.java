@@ -1,5 +1,7 @@
 package is.ru.honn.ruber.domain;
 
+import is.ru.honn.ruber.domain.pojo.User;
+
 import java.util.Date;
 
 public class UserRegistration extends User

@@ -1,11 +1,15 @@
 package is.ru.honn.ruber.drivers.data;
 
-import is.ru.honn.ruber.domain.Product;
-import is.ru.honn.ruber.domain.Review;
+import is.ru.honn.ruber.domain.pojo.Price;
+import is.ru.honn.ruber.domain.pojo.Product;
+import is.ru.honn.ruber.domain.pojo.Review;
+import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ruframework.data.RuData;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import scala.util.Try;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +28,18 @@ public class DriverData extends RuData implements DriverDataGateway
         List<Product> products;
         products = template.query("select * from ru_products", new ProductRowMapper());
         return products;
+    }
+
+    @Override
+    public Product getProductById(int id)
+    {
+        JdbcTemplate template = new JdbcTemplate(getDataSource());
+
+        Product product;
+        product = template.queryForObject("select * from ru_products " +
+                                          "where id = " + Integer.toString(id),
+                                           new ProductRowMapper());
+        return product;
     }
 
     @Override
@@ -55,6 +71,22 @@ public class DriverData extends RuData implements DriverDataGateway
         {
             throw new AddReviewException("Error adding review", divex);
         }
+    }
+
+    @Override
+    public Price getPriceById(int id) throws PriceNotFoundException
+    {
+        JdbcTemplate template = new JdbcTemplate(getDataSource());
+        Price price;
+        try
+        {
+            price = (Price) template.queryForObject("select * from ru_prices where id = " + Integer.toString(id), new PriceRowMapper());
+        }
+        catch (EmptyResultDataAccessException erdaex)
+        {
+            throw new PriceNotFoundException("No price found with id: " + id);
+        }
+        return price;
     }
 
 

@@ -1,6 +1,6 @@
 package controllers;
 
-import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.domain.pojo.User;
 import is.ru.honn.ruber.rides.service.RidesService;
 import is.ru.honn.ruber.users.service.UserService;
 import play.mvc.*;
