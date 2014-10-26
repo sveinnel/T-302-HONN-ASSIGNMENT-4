@@ -51,7 +51,7 @@ public class DriverData extends RuData implements DriverDataGateway
     }
 
     @Override
-    public void addReview(int productId, int riderId, int rating, int tripId, String comment) throws AddReviewException
+    public void addReview(int productId, int riderId, int rating, String comment) throws AddReviewException
     {
         Review review = new Review();
         SimpleJdbcInsert insert = new SimpleJdbcInsert(getDataSource())
@@ -60,7 +60,7 @@ public class DriverData extends RuData implements DriverDataGateway
         Map<String, Object> parameters = new HashMap<String, Object>(5);
         parameters.put("reviewerid", riderId);
         parameters.put("productid", productId);
-        parameters.put("tripid", tripId);
+        parameters.put("rating", rating);
         parameters.put("comment", comment);
 
         try
