@@ -51,26 +51,29 @@ public class DriverData extends RuData implements DriverDataGateway
     }
 
     @Override
-    public void addReview(int productId, int riderId, int rating, String comment) throws AddReviewException
+    public Review addReview(int productId, int riderId, int rating, String comment) throws AddReviewException
     {
-        Review review = new Review();
+        Review review = new Review(riderId,productId,rating,comment);
         SimpleJdbcInsert insert = new SimpleJdbcInsert(getDataSource())
                                       .withTableName("ru_reviews")
                                       .usingGeneratedKeyColumns("id");
         Map<String, Object> parameters = new HashMap<String, Object>(5);
-        parameters.put("reviewerid", riderId);
-        parameters.put("productid", productId);
-        parameters.put("rating", rating);
-        parameters.put("comment", comment);
+        parameters.put("reviewerid", review.getReviewerId());
+        parameters.put("productid", review.getProductId());
+        parameters.put("rating", review.getRating());
+        parameters.put("comment", review.getComment());
 
+        int key;
         try
         {
-            insert.execute(parameters);
+            key = insert.executeAndReturnKey(parameters).intValue();
         }
         catch(DataIntegrityViolationException divex)
         {
             throw new AddReviewException("Error adding review", divex);
         }
+        review.setId(key);
+        return review;
     }
 
     @Override

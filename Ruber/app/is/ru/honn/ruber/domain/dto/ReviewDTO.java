@@ -23,6 +23,11 @@ public class ReviewDTO
         this.comment = comment;
     }
 
+    public ReviewDTO()
+    {
+
+    }
+
     public int getId()
     {
         return id;

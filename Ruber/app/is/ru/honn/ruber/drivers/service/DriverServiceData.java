@@ -45,9 +45,9 @@ public class DriverServiceData implements DriverService
     }
 
     @Override
-    public void addReview(int productId, int riderId, int rating, String comment) throws AddReviewException
+    public Review addReview(int productId, int riderId, int rating, String comment) throws AddReviewException
     {
-        driverDataGateway.addReview(productId,riderId,rating,comment);
+        return driverDataGateway.addReview(productId, riderId, rating, comment);
     }
 
     @Override

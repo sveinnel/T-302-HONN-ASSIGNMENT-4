@@ -4,111 +4,121 @@ import java.util.Date;
 
 public class User
 {
-  private int id;
-  private String username;
-  private String firstName;
-  private String lastName;
-  private String password;
-  private String email;
-  private Date registered;
-  private boolean driver;
+    private int id;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String password;
+    private String email;
+    private Date registered;
+    private boolean driver;
 
-  public User()
-  {
-  }
+    public boolean isDriver()
+    {
+        return driver;
+    }
 
-  public User(int id, String username, String firstName, String lastName, String password, String email, Date registered)
-  {
-    this.id = id;
-    this.username = username;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.password = password;
-    this.email = email;
-    this.registered = registered;
-    this.driver = false;
-  }
+    public void setDriver(boolean driver)
+    {
+        this.driver = driver;
+    }
 
-  public User(String username, String firstName, String lastName, String password, String email, Date registered)
-  {
-    this.username = username;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.password = password;
-    this.email = email;
-    this.registered = registered;
-    this.driver = false;
-  }
+    public User()
+    {
+    }
 
-  public int getId()
-  {
-    return id;
-  }
+    public User(int id, String username, String firstName, String lastName, String password, String email, Date registered)
+    {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.registered = registered;
+        this.driver = false;
+    }
 
-  public void setId(int id)
-  {
-    this.id = id;
-  }
+    public User(String username, String firstName, String lastName, String password, String email, Date registered)
+    {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.registered = registered;
+        this.driver = false;
+    }
 
-  public String getUsername()
-  {
-    return username;
-  }
+    public int getId()
+    {
+        return id;
+    }
 
-  public void setUsername(String username)
-  {
-    this.username = username;
-  }
+    public void setId(int id)
+    {
+        this.id = id;
+    }
 
-  public String getFirstName()
-  {
-    return firstName;
-  }
+    public String getUsername()
+    {
+        return username;
+    }
 
-  public void setFirstName(String firstName)
-  {
-    this.firstName = firstName;
-  }
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
 
-  public String getLastName()
-  {
-    return lastName;
-  }
+    public String getFirstName()
+    {
+        return firstName;
+    }
 
-  public void setLastName(String lastName)
-  {
-    this.lastName = lastName;
-  }
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
 
-  public String getPassword()
-  {
-    return password;
-  }
+    public String getLastName()
+    {
+        return lastName;
+    }
 
-  public void setPassword(String password)
-  {
-    this.password = password;
-  }
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
 
-  public String getEmail()
-  {
-    return email;
-  }
+    public String getPassword()
+    {
+        return password;
+    }
 
-  public void setEmail(String email)
-  {
-    this.email = email;
-  }
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
 
-  public Date getRegistered()
-  {
-    return registered;
-  }
+    public String getEmail()
+    {
+        return email;
+    }
 
-  public void setRegistered(Date registered)
-  {
-    this.registered = registered;
-  }
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public Date getRegistered()
+    {
+        return registered;
+    }
+
+    public void setRegistered(Date registered)
+    {
+        this.registered = registered;
+    }
 }
 
 
