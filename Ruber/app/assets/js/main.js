@@ -71,6 +71,28 @@ var getReviewsByProductId = function getReviewsByProductId(){
         }
     };
 };
+var getDrivers = function getDrivers(){
+    console.log("Clickes a button ");
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/driverss";
+
+
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send(null);
+    xmlhttp.onreadystatechange = function() {
+        var constructRiderTable =  document.getElementById("constructDriverData");
+        if (xmlhttp.readyState == 4) {
+            if ( xmlhttp.status == 200) {
+                var obj = (JSON.parse(xmlhttp.responseText));
+                console.log(JSON.stringify(obj, null,4));
+            }
+            else{
+                alert("Error ->" + xmlhttp.responseText);
+                console.log(xmlhttp.responseText)
+            }
+        }
+    };
+};
 function parseDate(arr){
     var d = new Date(arr);
     var dateStr = d.getDate();
@@ -91,19 +113,8 @@ function getDriverInfo(productId) {
 
 
 function constructRiderHistory(arr) {
-    var out = "";
-    var i;
-    for(i = 0; i < arr.trips.length; i++) {
-        out +="<tr>"
-        out += "<td>"+ (i+1) +"</td>" ;
-        out += "<td>"+ parseDate(arr.trips[i].startTime) +"</td>" ;
-        out += "<td > i</td>" ;
-        out += "<td>"+ arr.trips[i].distance +" KM</td>" ;
-        out += "<td class='tripLength'>"+parseTripLength(arr.trips[i].startTime, arr.trips[i].endTime) +"  </td>" ;
-        out += "<td>" + getDriverInfo(arr.trips[i].productId)+"</td>" ;
-        out +="</tr>"
-    }
-    return out;
+    console.log("")
+    return "asdf";
 };
 
 
