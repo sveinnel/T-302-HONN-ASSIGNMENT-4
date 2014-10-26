@@ -1,6 +1,8 @@
 package controllers;
+import is.ru.honn.ruber.domain.dto.ReviewDTO;
 import is.ru.honn.ruber.domain.pojo.Product;
 import is.ru.honn.ruber.domain.dto.ProductDTO;
+import is.ru.honn.ruber.domain.pojo.Review;
 import is.ru.honn.ruber.drivers.service.DriverService;
 import is.ru.honn.ruber.users.service.UserService;
 import play.mvc.*;
@@ -15,7 +17,9 @@ import static play.libs.Json.toJson;
  */
 public class DriverController extends UserController {
 
-    public static Result getAllProducts() {
+
+    public static Result getAllProducts()
+    {
         DriverService driverService = (DriverService) driverCtx.getBean("driverService");
         UserService userService = (UserService) userCtx.getBean("userService");
         List<ProductDTO> products = new ArrayList<>();
@@ -36,6 +40,32 @@ public class DriverController extends UserController {
             return ok(toJson(products));
         }
         catch(Exception e)
+        {
+            return internalServerError(e.getMessage());
+        }
+    }
+    public static Result getReviwsByProductId(int id)
+    {
+        DriverService driverService = (DriverService) driverCtx.getBean("driverService");
+        UserService userService = (UserService) userCtx.getBean("userService");
+        List<ReviewDTO> reviews = new ArrayList<>();
+
+        try
+        {
+            for (Review r : driverService.getReviewsByProductId(id))
+            {
+                reviews.add(new ReviewDTO(
+                        r.getId(),
+                        userService.getUserById(r.getReviewerId()),
+                        driverService.getProductById(r.getProductId()),
+                        r.getRating(),
+                        r.getComment()
+                ));
+            }
+
+            return ok(toJson(reviews));
+        }
+        catch (Exception e)
         {
             return internalServerError(e.getMessage());
         }

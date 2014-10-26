@@ -8,25 +8,23 @@ public class Review
     private int id;
     private int reviewerId;
     private int productId;
-    private int tripId;
+    private int rating;
     private String comment;
 
-    public Review(int id, int reviewerId, int productId, int tripId, String comment)
+    public Review(int id, int reviewerId, int productId, int rating, String comment)
     {
-
         this.id = id;
         this.reviewerId = reviewerId;
         this.productId = productId;
-        this.tripId = tripId;
+        this.rating = rating;
         this.comment = comment;
     }
 
-    public Review(int reviewerId, int productId, int tripId, String comment)
+    public Review(int reviewerId, int productId, int rating, String comment)
     {
-
         this.reviewerId = reviewerId;
         this.productId = productId;
-        this.tripId = tripId;
+        this.rating = rating;
         this.comment = comment;
     }
 
@@ -65,14 +63,14 @@ public class Review
         this.productId = productId;
     }
 
-    public int getTripId()
+    public int getRating()
     {
-        return tripId;
+        return rating;
     }
 
-    public void setTripId(int tripId)
+    public void setRating(int rating)
     {
-        this.tripId = tripId;
+        this.rating = rating;
     }
 
     public String getComment()

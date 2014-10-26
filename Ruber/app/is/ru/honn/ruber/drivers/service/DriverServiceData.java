@@ -33,6 +33,12 @@ public class DriverServiceData implements DriverService
     }
 
     @Override
+    public Product getProductById(int id)
+    {
+        return null;
+    }
+
+    @Override
     public List<Review> getReviewsByProductId(int productId)
     {
         return driverDataGateway.getReviewsByProductId(productId);

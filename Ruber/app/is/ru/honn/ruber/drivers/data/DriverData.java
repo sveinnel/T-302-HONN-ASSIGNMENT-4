@@ -31,6 +31,18 @@ public class DriverData extends RuData implements DriverDataGateway
     }
 
     @Override
+    public Product getProductById(int id)
+    {
+        JdbcTemplate template = new JdbcTemplate(getDataSource());
+
+        Product product;
+        product = template.queryForObject("select * from ru_products " +
+                                          "where id = " + Integer.toString(id),
+                                           new ProductRowMapper());
+        return product;
+    }
+
+    @Override
     public List<Review> getReviewsByProductId(int productId)
     {
         JdbcTemplate template = new JdbcTemplate(getDataSource());
