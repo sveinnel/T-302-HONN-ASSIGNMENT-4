@@ -56,7 +56,7 @@ public class UserServiceData implements UserService
     public List<User> getDrivers() throws UserNotFoundException {
         List<User> driverList = userDataGateway.getDrivers();
 
-        return null;
+        return driverList;
     }
 
 

@@ -8,6 +8,7 @@ import is.ru.honn.ruber.domain.pojo.Review;
 import is.ru.honn.ruber.domain.pojo.User;
 import is.ru.honn.ruber.drivers.service.DriverService;
 import is.ru.honn.ruber.users.service.UserService;
+import play.Logger;
 import play.mvc.*;
 import views.html.drivers;
 
@@ -77,9 +78,12 @@ public class DriverController extends UserController {
 
 
     public static Result  getDrivers(){
+        Logger.info("BLABLALBALBLBA");
         try {
             List<User> users = userService.getDrivers();
-
+          //  Logger.info(users.get(0).getLastName());
+            Logger.info("BLABLALBALBLBA2");
+            Logger.info(users.get(0).getEmail());
             List<DriverDTO> drivers = new ArrayList<>();
 
             for (User u : users) {

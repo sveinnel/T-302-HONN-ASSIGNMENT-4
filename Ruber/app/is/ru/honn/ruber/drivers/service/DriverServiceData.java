@@ -66,6 +66,6 @@ public class DriverServiceData implements DriverService
     public List<Product> getProductsByDriverId(int driverid) {
         List<Product> products = driverDataGateway.getProductsByDriverId(driverid);
 
-        return null;
+        return products;
     }
 }
