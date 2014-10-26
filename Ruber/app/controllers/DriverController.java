@@ -88,12 +88,12 @@ public class DriverController extends UserController {
             {
                 productId = json.findPath("productId").asInt();
                 riderId = json.findPath("riderId").asInt();
-                rating = json.findPath("riderId").asInt();
+                rating = json.findPath("rating").asInt();
                 comment = json.findPath("comment").toString();
             }
             catch (Exception e)
             {
-                return badRequest("Error in Json data" + e.getMessage());
+                return badRequest("Error in Json data: " + e.getMessage());
             }
             try
             {
@@ -101,7 +101,7 @@ public class DriverController extends UserController {
             }
             catch (Exception e)
             {
-                return badRequest("Error in request" + e.getMessage());
+                return badRequest("Error in request: " + e.getMessage());
             }
             return ok(toJson(new ReviewDTO(
                     review.getId(),
