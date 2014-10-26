@@ -21,6 +21,10 @@ public class RideController extends UserController {
 
 
 
-       return ok(toJson(rideService.getTrips(user.getId())));
+       return ok(toJson(rideService.getTrips(user.getId(),0,0)));
+    }
+
+    public static Result index() {
+        return Results.TODO;
     }
 }

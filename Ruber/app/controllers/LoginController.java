@@ -50,7 +50,7 @@ public class LoginController extends UserController
 
     if (session().get("username") != null)
     {
-      return ok(index.render("Home"));
+      return redirect("/");
     }
     else
       return redirect("/");

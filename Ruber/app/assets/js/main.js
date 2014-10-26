@@ -1,3 +1,7 @@
+setTimeout(function() {
+    $('#welcomeMessage').fadeOut('slow');
+}, 1000);
+
 
 function getRiderHistory(){
     console.log("Clickes a button ");
@@ -49,6 +53,29 @@ function getProducts(){
     console.log("Clickes a button ");
     var xmlhttp = new XMLHttpRequest();
     var url = "/products";
+
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send(null);
+    xmlhttp.onreadystatechange = function() {
+        var constructRiderTable =  document.getElementById("constructTripData");
+        if (xmlhttp.readyState == 4) {
+            if ( xmlhttp.status == 200) {
+                var obj = (JSON.parse(xmlhttp.responseText));
+                console.log(JSON.stringify(obj, null,4));
+
+
+            }
+            else{
+                alert("Error ->" + xmlhttp.responseText);
+            }
+        }
+    };
+}
+function getReviewsByProductId(){
+    console.log("Clickes a button ");
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/product/1/reviews";
+
 
     xmlhttp.open('GET',url,true);
     xmlhttp.send(null);

@@ -10,7 +10,7 @@ public class Application extends Controller
 {
   public static Result index()
   {
-     return ok(index.render("Ruber"));
+     return ok(index.render("Welcome to Ruber"));
   }
 
 }

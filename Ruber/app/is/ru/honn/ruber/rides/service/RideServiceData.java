@@ -21,7 +21,7 @@ public class RideServiceData implements RidesService {
     }
 
     @Override
-    public History getTrips(int riderId) {
+    public History getTrips(int riderId, int offset, int limit) {
         return tripDataGateway.getTrips(riderId, offset, limit);
     }
 }

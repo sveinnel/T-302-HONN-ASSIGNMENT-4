@@ -1,26 +1,38 @@
 @(signupForm: Form[is.ru.honn.ruber.domain.User])
 
-@import helper._
-@import twitterBootstrap._
+    @import helper._
+    @import helper.twitterBootstrap._
 
-@main(title = "Ruber", nav = "login") {
-    @helper.form(action = routes.LoginController.login) {
-        <fieldset>
-            <legend>Log in</legend>
-            @inputText(
-                signupForm("username"),
-                '_label -> "Username",
-                '_error -> signupForm.globalError
-            )
-            @inputPassword(
-                signupForm("password"),
-                '_label -> "Password"
-            )
-        </fieldset>
+    @main(title = "Ruber", nav = "login") {
+        <div class="splash">
+            <div class="col-md-4 col-md-offset-4" >
+            @helper.form(action = routes.LoginController.login,'class -> "form-horizontal") {
+                <fieldset>
+                    <legend class="text-capitalize">LOG IN </legend>
+                    <div class="form-group">
+                        @inputText(
+                            signupForm("username"),
+                            '_id -> "Username",
+                            '_label -> "Username",
+                            '_error -> signupForm.globalError,
+                            'class -> "form-control"
+                        )
+                        @inputPassword(
+                            signupForm("password"),
+                            '_label -> "Password",
+                            'class -> "form-control"
+                        )
+                    </div>
+                </fieldset>
 
-        <div class="actions">
-            <input type="submit" class="btn primary" value="Login">
-            <a href="@routes.Application.index" class="btn">Cancel</a>
+                <div class="actions">
+                    <div class="btn-group ">
+                        <input type="submit" class="btn btn-primary" value="Login">
+                        <a href="@routes.Application.index" class="btn btn-default" >Cancel</a>
+                    </div>
+
+                </div>
+            }
+            </div>
         </div>
     }
-}
