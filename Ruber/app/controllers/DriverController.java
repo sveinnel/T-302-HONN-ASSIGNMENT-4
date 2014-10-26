@@ -1,12 +1,17 @@
 package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
+import is.ru.honn.ruber.domain.dto.DriverDTO;
 import is.ru.honn.ruber.domain.dto.ReviewDTO;
 import is.ru.honn.ruber.domain.pojo.Product;
 import is.ru.honn.ruber.domain.dto.ProductDTO;
 import is.ru.honn.ruber.domain.pojo.Review;
+import is.ru.honn.ruber.domain.pojo.User;
 import is.ru.honn.ruber.drivers.service.DriverService;
 import is.ru.honn.ruber.users.service.UserService;
+import play.Logger;
 import play.mvc.*;
+import views.html.drivers;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +75,30 @@ public class DriverController extends UserController {
             return notFound(e.getMessage());
         }
     }
+
+
+    public static Result  getDrivers(){
+        Logger.info("BLABLALBALBLBA");
+        try {
+            List<User> users = userService.getDrivers();
+          //  Logger.info(users.get(0).getLastName());
+            Logger.info("BLABLALBALBLBA2");
+            Logger.info(users.get(0).getEmail());
+            List<DriverDTO> drivers = new ArrayList<>();
+
+            for (User u : users) {
+                DriverDTO a = new DriverDTO(u, driverService.getProductsByDriverId(u.getId()));
+
+                drivers.add(a);
+            }
+            return ok(toJson(drivers));
+        }
+        catch (Exception e){
+            return notFound(e.getMessage());
+        }
+    };
+
+
     public static Result  addReview()
     {
         JsonNode json = request().body().asJson();
@@ -111,5 +140,11 @@ public class DriverController extends UserController {
                     review.getComment()
             )));
         }
+    }
+
+
+
+    public static Result index() {
+        return ok(drivers.render("Welcome to Drivers"));
     }
 }

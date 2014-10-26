@@ -19,6 +19,9 @@
                     <ul class="nav navbar-nav">
                     @if(session.get("username")) {
                         <li >
+                            <a href="@routes.DriverController.index()">Drivers</a>
+                        </li>
+                        <li >
                             <a href="@routes.LoginController.logout()">Logout</a>
                         </li>
                     } else {

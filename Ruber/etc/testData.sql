@@ -19,6 +19,20 @@ insert into ru_products (description,
                         driverid,
                         priceid)
 values(
+    'Nice Pink cab',
+    'BicketMobile',
+    3,
+    'http://d1oi7t5trwfj5d.cloudfront.net/f7/c7/6d789759445f87ab6ccad153bc00/taxi-driver.jpg',
+    2,
+    1
+)
+insert into ru_products (description,
+                        displayname,
+                        capacity,
+                        imageurl,
+                        driverid,
+                        priceid)
+values(
     'Nice Blue cab',
     'Blue Taxi',
     3,

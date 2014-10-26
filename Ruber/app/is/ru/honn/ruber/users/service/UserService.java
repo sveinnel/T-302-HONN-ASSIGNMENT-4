@@ -14,7 +14,5 @@ public interface UserService
 
   public User getUser(String username) throws UserNotFoundException;
   public User getUserById(int id);
-
-
-
+  public List<User> getDrivers() throws UserNotFoundException;
 }

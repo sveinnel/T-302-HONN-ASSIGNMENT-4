@@ -70,7 +70,7 @@ var getReviewsByProductId = function getReviewsByProductId(){
             }
         }
     };
-}
+};
 function parseDate(arr){
     var d = new Date(arr);
     var dateStr = d.getDate();
@@ -104,6 +104,28 @@ function constructRiderHistory(arr) {
         out +="</tr>"
     }
     return out;
+};
+var getDrivers = function getDrivers(){
+    console.log("Clickes a button ");
+    var xmlhttp = new XMLHttpRequest();
+    var url = "/driverss";
+
+
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send(null);
+    xmlhttp.onreadystatechange = function() {
+        var constructRiderTable =  document.getElementById("constructTripData");
+        if (xmlhttp.readyState == 4) {
+            if ( xmlhttp.status == 200) {
+                var obj = (JSON.parse(xmlhttp.responseText));
+                console.log(JSON.stringify(obj, null,4));
+            }
+            else{
+                alert("Error ->" + xmlhttp.responseText);
+                console.log(xmlhttp.responseText)
+            }
+        }
+    };
 };
 
 $(function() {

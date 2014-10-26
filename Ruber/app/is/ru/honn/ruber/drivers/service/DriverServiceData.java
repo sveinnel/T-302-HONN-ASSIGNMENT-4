@@ -61,4 +61,11 @@ public class DriverServiceData implements DriverService
             throw e;
         }
     }
+
+    @Override
+    public List<Product> getProductsByDriverId(int driverid) {
+        List<Product> products = driverDataGateway.getProductsByDriverId(driverid);
+
+        return products;
+    }
 }
