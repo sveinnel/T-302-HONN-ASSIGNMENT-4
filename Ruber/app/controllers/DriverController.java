@@ -41,7 +41,7 @@ public class DriverController extends UserController {
         }
         catch(Exception e)
         {
-            return internalServerError(e.getMessage());
+            return notFound(e.getMessage());
         }
     }
     public static Result getReviwsByProductId(int id)
@@ -67,7 +67,7 @@ public class DriverController extends UserController {
         }
         catch (Exception e)
         {
-            return internalServerError(e.getMessage());
+            return notFound(e.getMessage());
         }
     }
 }
