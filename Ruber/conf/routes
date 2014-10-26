@@ -12,7 +12,7 @@ GET         /logout                            controllers.LoginController.logou
 GET         /drivers                           controllers.DriverController.index()
 
 
-GET         /driverss                           controllers.DriverController.getDrivers()
+GET         /driverss                          controllers.DriverController.getDrivers()
 GET         /rider/history                     controllers.RideController.getListOfTrips()
 GET         /products                          controllers.DriverController.getAllProducts()
 GET         /product/:productid/reviews        controllers.DriverController.getReviwsByProductId(productid: Int)
