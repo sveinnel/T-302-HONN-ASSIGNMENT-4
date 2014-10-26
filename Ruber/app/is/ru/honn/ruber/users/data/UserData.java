@@ -80,5 +80,14 @@ public class UserData extends RuData implements UserDataGateway
         return user;
     }
 
+    @Override
+    public List<User> getDrivers() {
+        JdbcTemplate template = new JdbcTemplate(getDataSource());
+
+        List<User> drivers;
+        drivers = template.query("select * from ru_users where driver = 1", new UserRowMapper());
+        return drivers;
+    }
+
 
 }

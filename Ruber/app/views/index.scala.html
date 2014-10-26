@@ -6,9 +6,9 @@
 
     @if(session.get("username")) {
         <h3 id="welcomeMessage">Good to see you again @{session.get("displayName")}!</h3>
-        <input class="btn btn-default" type="button" value="Get my trips" onclick="getRiderHistory()"/>
-        <input class="btn btn-default" type="button" value="Get my trips" onclick="getProducts()"/>
-        <input class="btn btn-default" type="button" value="Get my trips" onclick="getReviewsByProductId()"/>
+        <input class="btn btn-default" type="button" value="getRiderHistory" onclick="getRiderHistory()"/>
+        <input class="btn btn-default" type="button" value="getProducts" onclick="getProducts()"/>
+        <input class="btn btn-default" type="button" value="getReviewsByProductId" onclick="getReviewsByProductId()"/>
 
         <div class="container">
             <div class="row">

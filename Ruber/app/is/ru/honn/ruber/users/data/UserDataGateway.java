@@ -11,4 +11,5 @@ public interface UserDataGateway extends RuDataAccess
     public int addUser(User user);
     public User getUserByUsername(String username);
     public User getUserById(int id);
+    public List<User> getDrivers();
 }

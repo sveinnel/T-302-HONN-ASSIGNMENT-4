@@ -18,4 +18,7 @@ public interface DriverDataGateway extends RuDataAccess
     public Review addReview(int productId, int riderId, int rating, String comment) throws AddReviewException;
 
     Price getPriceById(int id) throws PriceNotFoundException;
+
+    public List<Product> getProductsByDriverId(int driverid);
+
 }

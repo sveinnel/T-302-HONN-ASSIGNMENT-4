@@ -70,7 +70,7 @@ var getReviewsByProductId = function getReviewsByProductId(){
             }
         }
     };
-}
+};
 function parseDate(arr){
     var d = new Date(arr);
     var dateStr = d.getDate();
@@ -105,6 +105,7 @@ function constructRiderHistory(arr) {
     }
     return out;
 };
+
 
 $(function() {
     $('.tripLength').hover()

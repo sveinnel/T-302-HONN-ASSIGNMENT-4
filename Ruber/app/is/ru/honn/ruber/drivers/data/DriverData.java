@@ -92,6 +92,15 @@ public class DriverData extends RuData implements DriverDataGateway
         return price;
     }
 
+    @Override
+    public List<Product> getProductsByDriverId(int driverid) {
+        JdbcTemplate template = new JdbcTemplate(getDataSource());
+
+        List<Product> products;
+        products = template.query("select * from ru_products where driverid = "+ driverid, new ProductRowMapper());
+        return products;
+    }
+
 
 }
 
