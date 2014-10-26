@@ -17,7 +17,7 @@ public class ReviewRowmapper implements RowMapper<Review>
         return new Review(rs.getInt("id"),
                           rs.getInt("reviewerid"),
                           rs.getInt("productid"),
-                          rs.getInt("tripid"),
+                          rs.getInt("rating"),
                           rs.getString("comment"));
     }
 }
