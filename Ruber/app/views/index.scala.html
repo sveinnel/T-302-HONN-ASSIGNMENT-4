@@ -6,67 +6,47 @@
 
     @if(session.get("username")) {
         <h3 id="welcomeMessage">Good to see you again @{session.get("displayName")}!</h3>
+        <input class="btn btn-default" type="button" value="Get my trips" onclick="getRiderHistory()"/>
+        <input class="btn btn-default" type="button" value="Get my trips" onclick="getProducts()"/>
+        <input class="btn btn-default" type="button" value="Get my trips" onclick="getReviewsByProductId()"/>
+
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 user-details">
-                            <div class="user-image">
-                                <img src="http://www.olafurandri.com/wp/wp-content/uploads/2008/08/andri.jpeg" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
-                            </div>
-                            <div class="user-info-block">
-                                <div class="user-heading">
-                                    <h3>@{session.get("displayName")}</h3>
-                                    <span class="help-block">Chandigarh, IN</span>
-                                </div>
 
-                                <div class="user-body">
-                                    <div class="tab-content">
-                                        <div id="information" class="tab-pane active">
-                                            <h4>Account Information</h4>
-                                        </div>
-                                        <div id="settings" class="tab-pane">
-                                            <h4>Settings</h4>
-                                        </div>
-                                        <div id="email" class="tab-pane">
-                                            <h4>Send Message</h4>
-                                        </div>
-                                        <div id="events" class="tab-pane">
-                                            <h4>Events</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="col-lg-3 user-details">
+                    <div class="user-image">
+                        <img src="http://www.olafurandri.com/wp/wp-content/uploads/2008/08/andri.jpeg" alt="Karan Singh Sisodia" title="Karan Singh Sisodia" class="img-circle">
+                    </div>
+                    <div class="user-info-block">
+                        <div class="user-heading">
+                            <h3>@{session.get("displayName")}</h3>
+                            <span class="help-block">Chandigarh, IN</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-lg-9" id="tripHistory">
-                    <input class="btn btn-default" type="button" value="Get my trips" onclick="getRiderHistory()"/>
-                    <input class="btn btn-default" type="button" value="Get my trips" onclick="getProducts()"/>
-                    <input class="btn btn-default" type="button" value="Get my trips" onclick="getReviewsByProductId()"/>
                     <h2>Trip history</h2>
-                    <table class="table">
+                    <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Request Time</th>
-                                <th>Product Id</th>
-                                <th>status</th>
-                                <th>distance</th>
-                                <th>start time</th>
-                                <th>end time</th>
-                                <th>startLongitude</th>
-                                <th>endLongitude</th>
-                                <th>startLatitude</th>
-                                <th>endLatitude</th>
-                                <th>riderId</th>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Trip info</th>
+                                <th>Distance</th>
+                                <th>Trip length</th>
+                                <th>Display driver</th>
                             </tr>
                         </thead>
                         <tbody id="constructTripData">
                         </tbody>
                     </table>
                 </div >
+
             </div>
 
 
-    } else {
+            } else {
         <div class="splash">
             <h3>Looks like you're new here!</h3>
             <div class="col-md-4 col-md-offset-4" >
@@ -77,4 +57,6 @@
             </div>
         </div>
     }
+</div>
+
 }

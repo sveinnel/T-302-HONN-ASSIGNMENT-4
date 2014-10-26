@@ -71,33 +71,43 @@ var getReviewsByProductId = function getReviewsByProductId(){
         }
     };
 }
+function parseDate(arr){
+    var d = new Date(arr);
+    var dateStr = d.getDate();
+    dateStr += "-" + d.getDate();
+    dateStr += "-" + d.getYear();
+    return dateStr;
+};
+function parseTripLength(start,end){
+    var totalSec = (end - start)/1000;
+
+    var hr = Math.floor(totalSec / 3600);
+    var min = Math.floor((totalSec - (hr * 3600))/60);
+    return hr +"."+ min ;
+};
+function getDriverInfo(productId) {
+
+}
+
 
 function constructRiderHistory(arr) {
     var out = "";
     var i;
-    var j;
-    //console.log(arr.trips.id);
-    console.log(arr.trips[0].id);
     for(i = 0; i < arr.trips.length; i++) {
         out +="<tr>"
-        out += "<td>"+ arr.trips[i].id +"  </td>" ;
-        out += "<td>"+ arr.trips[i].requestTime +"  </td>" ;
-        out += "<td>"+ arr.trips[i].productId +"  </td>" ;
-        out += "<td>"+ arr.trips[i].status +"  </td>" ;
-        out += "<td>"+ arr.trips[i].distance +"  </td>" ;
-        out += "<td>"+new Date(arr.trips[i].startTime) +"  </td>" ;
-        out += "<td>"+ arr.trips[i].endTime +"  </td>" ;
-        out += "<td>"+ arr.trips[i].startLongitude +"  </td>" ;
-        out += "<td>"+ arr.trips[i].endLongitude +"  </td>" ;
-        out += "<td>"+ arr.trips[i].startLatitude +"  </td>" ;
-        out += "<td>"+ arr.trips[i].endLatitude +"  </td>" ;
-        out += "<td>"+ arr.trips[i].riderId +"  </td>" ;
+        out += "<td>"+ (i+1) +"</td>" ;
+        out += "<td>"+ parseDate(arr.trips[i].startTime) +"</td>" ;
+        out += "<td class='lead'> i</td>" ;
+        out += "<td>"+ arr.trips[i].distance +" KM</td>" ;
+        out += "<td class='tripLength'>"+parseTripLength(arr.trips[i].startTime, arr.trips[i].endTime) +"  </td>" ;
+        out += "<td>" + getDriverInfo(arr.trips[i].productId)+"</td>" ;
         out +="</tr>"
     }
     return out;
 };
 
 $(function() {
+    $('.tripLength').hover()
 
     setTimeout(function() {
         $('#welcomeMessage').fadeOut('slow');
