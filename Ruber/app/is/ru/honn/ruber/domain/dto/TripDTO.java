@@ -13,7 +13,7 @@ public class TripDTO
 {
     protected int id;
     protected Timestamp requestTime;
-    protected Product product;
+    protected ProductDTO product;
     protected TripStatus status;
     protected double distance;
     protected Timestamp startTime;
@@ -24,7 +24,8 @@ public class TripDTO
     protected double endLatitude;
     protected User rider;
 
-    public TripDTO(int id, Timestamp requestTime, Product product, TripStatus status, double distance, Timestamp startTime, Timestamp endTime, double startLongitude, double endLongitude, double startLatitude, double endLatitude, User rider)
+
+    public TripDTO(int id, Timestamp requestTime, ProductDTO product, TripStatus status, double distance, Timestamp startTime, Timestamp endTime, double startLongitude, double endLongitude, double startLatitude, double endLatitude, User rider)
     {
         this.id = id;
         this.requestTime = requestTime;
@@ -40,7 +41,7 @@ public class TripDTO
         this.rider = rider;
     }
 
-    public TripDTO(Timestamp requestTime, Product product, TripStatus status, double distance, Timestamp startTime, Timestamp endTime, double startLongitude, double endLongitude, double startLatitude, double endLatitude, User rider)
+    public TripDTO(Timestamp requestTime, ProductDTO product, TripStatus status, double distance, Timestamp startTime, Timestamp endTime, double startLongitude, double endLongitude, double startLatitude, double endLatitude, User rider)
     {
         this.requestTime = requestTime;
         this.product = product;
@@ -60,6 +61,7 @@ public class TripDTO
         return id;
     }
 
+
     public void setId(int id)
     {
         this.id = id;
@@ -75,12 +77,11 @@ public class TripDTO
         this.requestTime = requestTime;
     }
 
-    public Product getProduct()
+    public ProductDTO getProduct()
     {
         return product;
     }
-
-    public void setProduct(Product product)
+    public void setProduct(ProductDTO product)
     {
         this.product = product;
     }

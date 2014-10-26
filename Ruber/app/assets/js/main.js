@@ -83,7 +83,10 @@ function parseTripLength(start,end){
 
     var hr = Math.floor(totalSec / 3600);
     var min = Math.floor((totalSec - (hr * 3600))/60);
-    return hr +"."+ min ;
+    if(hr === 0)
+        return min + "min";
+    else
+        return hr + "Hr" + ":" + min + "min";
 };
 function getDriverInfo(productId) {
   return productId;
@@ -93,15 +96,15 @@ function getDriverInfo(productId) {
 function constructRiderHistory(arr) {
     var out = "";
     var i;
-    for(i = 0; i < arr.trips.length; i++) {
-        out +="<tr>"
+    for(i = 0; i < arr.length; i++) {
+        out += "<tr>"
         out += "<td>"+ (i+1) +"</td>" ;
-        out += "<td>"+ parseDate(arr.trips[i].startTime) +"</td>" ;
-        out += "<td > i</td>" ;
-        out += "<td>"+ arr.trips[i].distance +" KM</td>" ;
-        out += "<td class='tripLength'>"+parseTripLength(arr.trips[i].startTime, arr.trips[i].endTime) +"  </td>" ;
-        out += "<td>" + getDriverInfo(arr.trips[i].productId)+"</td>" ;
-        out +="</tr>"
+        out += "<td>"+ parseDate(arr[i].startTime) +"</td>" ;
+        out += "<td>" + arr[i].product.price.finalPrice + arr[i].product.price.currencyCode + "</td>" ;
+        out += "<td>"+ arr[i].distance +" KM</td>" ;
+        out += "<td class='tripLength'>"+parseTripLength(arr[i].startTime, arr[i].endTime) +"  </td>" ;
+        out += "<td>" + arr[i].product.driver.firstName + " " + arr[i].product.driver.lastName + "</td>" ;
+        out += "</tr>"
     }
     return out;
 };

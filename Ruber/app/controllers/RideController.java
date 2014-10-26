@@ -1,7 +1,9 @@
 package controllers;
 
+import is.ru.honn.ruber.domain.dto.ProductDTO;
 import is.ru.honn.ruber.domain.dto.TripDTO;
 import is.ru.honn.ruber.domain.pojo.History;
+import is.ru.honn.ruber.domain.pojo.Product;
 import is.ru.honn.ruber.domain.pojo.Trip;
 import is.ru.honn.ruber.domain.pojo.User;
 import is.ru.honn.ruber.drivers.service.DriverService;
@@ -11,6 +13,7 @@ import play.mvc.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import static play.libs.Json.toJson;
 
@@ -35,10 +38,20 @@ public class RideController extends UserController
         {
             for (Trip t : history.getTrips())
             {
+                Product product = driverService.getProductById(t.getProductId());
+                ProductDTO productDTO = new ProductDTO(
+                        product.getId(),
+                        product.getDescription(),
+                        product.getDisplayName(),
+                        product.getCapacity(),
+                        product.getImage(),
+                        userService.getUserById(product.getDriverId()),
+                        driverService.getPriceById(product.getPriceId())
+                );
                 trips.add(new TripDTO(
                         t.getId(),
                         t.getRequestTime(),
-                        driverService.getProductById(t.getProductId()),
+                        productDTO,
                         t.getStatus(),
                         t.getDistance(),
                         t.getStartTime(),

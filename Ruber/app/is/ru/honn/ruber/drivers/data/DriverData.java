@@ -37,8 +37,8 @@ public class DriverData extends RuData implements DriverDataGateway
 
         Product product;
         product = template.queryForObject("select * from ru_products " +
-                                          "where id = " + Integer.toString(id),
-                                           new ProductRowMapper());
+                        "where id = " + id,
+                new ProductRowMapper());
         return product;
     }
 
