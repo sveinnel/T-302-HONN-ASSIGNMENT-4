@@ -86,7 +86,7 @@ function parseTripLength(start,end){
     return hr +"."+ min ;
 };
 function getDriverInfo(productId) {
-
+  return productId;
 }
 
 
@@ -97,7 +97,7 @@ function constructRiderHistory(arr) {
         out +="<tr>"
         out += "<td>"+ (i+1) +"</td>" ;
         out += "<td>"+ parseDate(arr.trips[i].startTime) +"</td>" ;
-        out += "<td class='lead'> i</td>" ;
+        out += "<td > i</td>" ;
         out += "<td>"+ arr.trips[i].distance +" KM</td>" ;
         out += "<td class='tripLength'>"+parseTripLength(arr.trips[i].startTime, arr.trips[i].endTime) +"  </td>" ;
         out += "<td>" + getDriverInfo(arr.trips[i].productId)+"</td>" ;
