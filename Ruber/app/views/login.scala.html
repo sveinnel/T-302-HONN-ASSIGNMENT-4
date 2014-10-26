@@ -1,8 +1,7 @@
-@(signupForm: Form[User])
-@import is.ru.honn.ruber.domain.pojo.User
+@(signupForm: Form[is.ru.honn.ruber.domain.pojo.User])
 
 @import helper._
-@import twitterBootstrap._
+@import helper.twitterBootstrap._
 
 @main(title = "Ruber", nav = "login") {
     @helper.form(action = routes.LoginController.login) {

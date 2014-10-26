@@ -1,8 +1,7 @@
-@(signupForm: Form[UserRegistration])
-@import is.ru.honn.ruber.domain.pojo.UserRegistration
+@(signupForm: Form[is.ru.honn.ruber.domain.UserRegistration])
 
 @import helper._
-@import twitterBootstrap._
+@import helper.twitterBootstrap._
 
 @main("Signup", nav = "signup") {
     @helper.form(action = routes.SignupController.signup) {
