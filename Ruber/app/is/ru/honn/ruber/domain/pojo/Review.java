@@ -1,4 +1,4 @@
-package is.ru.honn.ruber.domain;
+package is.ru.honn.ruber.domain.pojo;
 
 /**
  * Created by sveinn on 25.10.2014.

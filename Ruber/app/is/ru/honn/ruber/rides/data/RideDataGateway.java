@@ -1,7 +1,7 @@
 package is.ru.honn.ruber.rides.data;
 
-import is.ru.honn.ruber.domain.History;
-import is.ru.honn.ruber.domain.Trip;
+import is.ru.honn.ruber.domain.pojo.History;
+import is.ru.honn.ruber.domain.pojo.Trip;
 import is.ruframework.data.RuDataAccess;
 
 import java.util.List;

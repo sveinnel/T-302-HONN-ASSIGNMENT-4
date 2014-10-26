@@ -1,7 +1,7 @@
 package is.ru.honn.ruber.users.data;
 
-import is.ru.honn.ruber.domain.Trip;
-import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.domain.pojo.Trip;
+import is.ru.honn.ruber.domain.pojo.User;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UsernameExistsException;
 import is.ruframework.data.RuData;
@@ -62,6 +62,23 @@ public class UserData extends RuData implements UserDataGateway
     }
     return user;
   }
+
+    @Override
+    public User getUserById(int id)
+    {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate(getDataSource());
+        User user;
+        try
+        {
+            user = (User)jdbcTemplate.queryForObject(
+                    "select * from ru_users where id = " + Integer.toString(id), new UserRowMapper());
+        }
+        catch (EmptyResultDataAccessException erdaex)
+        {
+            throw new UserNotFoundException("No user found with id: " + id);
+        }
+        return user;
+    }
 
 
 }

@@ -1,9 +1,9 @@
 package is.ru.honn.ruber.users.service;
 
 
-import is.ru.honn.ruber.domain.Trip;
+import is.ru.honn.ruber.domain.pojo.Trip;
 import is.ru.honn.ruber.users.data.UserDataGateway;
-import is.ru.honn.ruber.domain.User;
+import is.ru.honn.ruber.domain.pojo.User;
 
 import java.util.Date;
 import java.util.List;
@@ -40,6 +40,17 @@ public class UserServiceData implements UserService
     }
     return user;
   }
+
+    @Override
+    public User getUserById(int id)
+    {
+        User user = userDataGateway.getUserById(id);
+        if (user == null)
+        {
+            throw new UserNotFoundException("User with the id " + id + " not found!");
+        }
+        return user;
+    }
 
 
 }

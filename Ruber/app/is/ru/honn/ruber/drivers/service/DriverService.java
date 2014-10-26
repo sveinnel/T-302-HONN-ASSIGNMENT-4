@@ -1,8 +1,10 @@
 package is.ru.honn.ruber.drivers.service;
 
-import is.ru.honn.ruber.domain.Product;
-import is.ru.honn.ruber.domain.Review;
+import is.ru.honn.ruber.domain.pojo.Price;
+import is.ru.honn.ruber.domain.pojo.Product;
+import is.ru.honn.ruber.domain.pojo.Review;
 import is.ru.honn.ruber.drivers.data.AddReviewException;
+import is.ru.honn.ruber.drivers.data.PriceNotFoundException;
 
 import java.util.List;
 
@@ -14,4 +16,5 @@ public interface DriverService
     public List<Product> getAllProducts();
     public List<Review> getReviewsByProductId(int productId);
     public void addReview(int productId, int riderId, int rate, int tripId, String comment) throws AddReviewException;
+    public Price getPriceById(int id) throws PriceNotFoundException;
 }

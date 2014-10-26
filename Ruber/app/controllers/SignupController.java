@@ -1,7 +1,7 @@
 package controllers;
 
 
-import is.ru.honn.ruber.domain.UserRegistration;
+import is.ru.honn.ruber.domain.pojo.UserRegistration;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UserService;
 import play.mvc.*;

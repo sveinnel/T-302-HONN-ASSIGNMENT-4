@@ -1,8 +1,8 @@
 package is.ru.honn.ruber.rides.service;
 
 
-import is.ru.honn.ruber.domain.History;
-import is.ru.honn.ruber.domain.Trip;
+import is.ru.honn.ruber.domain.pojo.History;
+import is.ru.honn.ruber.domain.pojo.Trip;
 
 import java.util.ArrayList;
 import java.util.List;

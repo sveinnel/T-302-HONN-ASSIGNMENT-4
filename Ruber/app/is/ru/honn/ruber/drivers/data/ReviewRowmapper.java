@@ -1,6 +1,6 @@
 package is.ru.honn.ruber.drivers.data;
 
-import is.ru.honn.ruber.domain.Review;
+import is.ru.honn.ruber.domain.pojo.Review;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

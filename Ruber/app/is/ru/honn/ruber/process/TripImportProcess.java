@@ -1,6 +1,6 @@
 package is.ru.honn.ruber.process;
 
-import is.ru.honn.ruber.domain.Trip;
+import is.ru.honn.ruber.domain.pojo.Trip;
 import is.ru.honn.ruber.rides.service.RidesService;
 import is.ruframework.process.RuAbstractProcess;
 import org.springframework.context.ApplicationContext;
