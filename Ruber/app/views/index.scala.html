@@ -14,7 +14,7 @@
                             </div>
                             <div class="user-info-block">
                                 <div class="user-heading">
-                                    <h3>Karan Singh Sisodia</h3>
+                                    <h3>@{session.get("displayName")}</h3>
                                     <span class="help-block">Chandigarh, IN</span>
                                 </div>
 
@@ -37,11 +37,10 @@
                             </div>
                 </div>
 
-                <div class="col-lg-9">
+                <div class="col-lg-9" id="tripHistory">
                     <input class="btn btn-default" type="button" value="Get my trips" onclick="getRiderHistory()"/>
                     <input class="btn btn-default" type="button" value="Get my trips" onclick="getProducts()"/>
                     <input class="btn btn-default" type="button" value="Get my trips" onclick="getReviewsByProductId()"/>
-
                     <h2>Trip history</h2>
                     <table class="table">
                         <thead>
@@ -63,12 +62,8 @@
                         <tbody id="constructTripData">
                         </tbody>
                     </table>
-                </div>
+                </div >
             </div>
-
-
-
-
 
 
     } else {

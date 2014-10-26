@@ -39,6 +39,7 @@ public class LoginController extends UserController
       }
 
       session("username", user.getUsername());
+      //session("displayImg",user.get)
       session("displayName", user.getFirstName() + " " + user.getLastName());
 
     }
