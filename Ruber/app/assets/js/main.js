@@ -93,14 +93,14 @@ function getDriverInfo(productId) {
 function constructRiderHistory(arr) {
     var out = "";
     var i;
-    for(i = 0; i < arr.trips.length; i++) {
+    for(i = 0; i < arr..length; i++) {
         out +="<tr>"
         out += "<td>"+ (i+1) +"</td>" ;
-        out += "<td>"+ parseDate(arr.trips[i].startTime) +"</td>" ;
+        out += "<td>"+ parseDate(arr[i].startTime) +"</td>" ;
         out += "<td > i</td>" ;
-        out += "<td>"+ arr.trips[i].distance +" KM</td>" ;
-        out += "<td class='tripLength'>"+parseTripLength(arr.trips[i].startTime, arr.trips[i].endTime) +"  </td>" ;
-        out += "<td>" + getDriverInfo(arr.trips[i].productId)+"</td>" ;
+        out += "<td>"+ arr[i].distance +" KM</td>" ;
+        out += "<td class='tripLength'>"+parseTripLength(arr[i].startTime, arr.trips[i].endTime) +"  </td>" ;
+        out += "<td>" + getDriverInfo(arr[i].productId)+"</td>" ;
         out +="</tr>"
     }
     return out;
