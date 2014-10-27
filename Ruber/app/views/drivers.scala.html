@@ -7,22 +7,38 @@
 
 @main(title) {
     @if(session.get("username")) {
-        <button onclick="getDrivers()" value="button"> sdf</button>
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 user-details">
-                    <div  id="driversList">
-                        <h2>Driverlist</h2>
+                <div class="col-lg-6 user-details">
+                    <div id="driversList">
+                        <h2>Drivers</h2>
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
-
-                                    <th>Display driver</th>
+                                    <th>Name </th>
+                                    <th>Email</th>
+                                    <th>Driver products</th>
                                 </tr>
                             </thead>
                             <tbody id="constructDriverData">
+                            </tbody>
+                        </table>
+                    </div >
+                </div>
+                <div class="col-lg-6 user-details">
+                    <div id="productsList">
+                        <h2 id="nameOfDriver">Product</h2>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Display name </th>
+                                    <th>capacity</th>
+                                    <th>Driver products</th>
+                                </tr>
+                            </thead>
+                            <tbody id="constructroductsListData">
                             </tbody>
                         </table>
                     </div >
