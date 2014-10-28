@@ -48,7 +48,7 @@ function geneRateCommentsForProduct(comments){
 
     if(comments.length > 0){
         totalRating /= comments.length;
-        out += "<span>Total rating : " + totalRating.toString().substr(0,3) + "</span>";
+        out += "<span>Average rating : " + totalRating.toString().substr(0,3) + "</span>";
     }else{
         out += "This driver has no reviews";
     }
@@ -288,6 +288,8 @@ var postComment = function postComment(){
         http.onreadystatechange = function () {//Call a function when the state changes.
             if (http.readyState == 4 && http.status == 200) {
                 getReviewsByProductId(ratingProductId);
+                var commentTxt =  $("#inputComment").val("");
+                var rating =  $("#inputRating").val("");
             }
         }
         http.send(JSON.stringify(toSend));
