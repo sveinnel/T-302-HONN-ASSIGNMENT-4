@@ -121,9 +121,12 @@ var setCoord = function setCoord(id){
     console.log(myTrips[id].endLatitude );
     console.log(myTrips[id].endLongitude );
     latlong1 = new google.maps.LatLng(myTrips[id].startLongitude,myTrips[id].startLatitude );
-    latlong2 = new google.maps.LatLng(64.133222,-21.9111);
-   // latlong1 = new google.maps.LatLng(64.133333,-21.933333);
-    latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+
+    latlong2 = new google.maps.LatLng(myTrips[id].endLongitude,myTrips[id].endLatitude );
+    //latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+    // latlong1 = new google.maps.LatLng(64.133333,-21.933333);
+    //latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+    initialize(latlong1,latlong2);
 };
 
 function constructRiderHistory(arr) {
@@ -258,14 +261,12 @@ var postComment = function postComment(){
         http.send(JSON.stringify(toSend));
     }
 };
-var initialize = function initialize() {
+var initialize = function initialize(latlong1,latlong2) {
     if($("#map_canvas").length> 0){
         mapOptions = {
             center: { lat:  64.133333, lng: -21.933333},
             zoom: 10
         };
-        latlong1 = new google.maps.LatLng(64.133333,-21.933333);
-        latlong2 = new google.maps.LatLng(64.133222,-21.9111);
 
         var firstMarker = new google.maps.Marker({
             position: latlong1,
@@ -308,7 +309,10 @@ $(function() {
         google.maps.event.trigger( map, "resize");
         map.setCenter(markerLatLng);
     };
-    google.maps.event.addDomListener(window, 'load', initialize);
+    latlong1 = new google.maps.LatLng(64.133333,-21.933333);
+    latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+
+    google.maps.event.addDomListener(window, 'load', initialize(latlong1,latlong2));
 
 
 });
