@@ -6,11 +6,14 @@ var latlong1 = {};
 var latlong2 = {};
 var myTrips = {};
 
+
+/**
+ * Returns rider history object only returns if a user is signed in.
+ */
 var getRiderHistory =function(){
     if($("#tripHistory").length >0){
         var xmlhttp = new XMLHttpRequest();
         var url = "/rider/history";
-
         xmlhttp.open('GET',url,true);
         xmlhttp.send(null);
         xmlhttp.onreadystatechange = function() {
@@ -30,25 +33,10 @@ var getRiderHistory =function(){
     }
 };
 
-//For debugging only
-function getProducts(){
-    var xmlhttp = new XMLHttpRequest();
-    var url = "/products";
-    xmlhttp.open('GET',url,true);
-    xmlhttp.send(null);
-    xmlhttp.onreadystatechange = function() {
-        var constructRiderTable =  document.getElementById("constructTripData");
-        if (xmlhttp.readyState == 4) {
-            if ( xmlhttp.status == 200) {
-                var obj = (JSON.parse(xmlhttp.responseText));
-            }
-            else{
-                console.log("Error ->" + xmlhttp.responseText);
-            }
-        }
-    };
-};
-
+/**
+ * Generates html list for comments
+ * @param comments array of comments
+ */
 function geneRateCommentsForProduct(comments){
     var out = "";
 
@@ -76,7 +64,11 @@ function geneRateCommentsForProduct(comments){
     var reviewForProduct = document.getElementById("productWithId");
     reviewForProduct.innerHTML = out;
 }
-
+/**
+ * Get request for reviews by product id, on callback gegnerates the comments
+ * for the product
+ * @param id integer of product to get
+ */
 var getReviewsByProductId = function getReviewsByProductId(id){
     var xmlhttp = new XMLHttpRequest();
     var url = "/products/"+id+"/reviews";
@@ -96,6 +88,12 @@ var getReviewsByProductId = function getReviewsByProductId(id){
     };
 };
 
+/**
+ * Parse date object returns the date as string object
+ * @param arr date object
+ * @returns {number} date as string
+ */
+
 function parseDate(arr){
     var d = new Date(arr);
     var dateStr = d.getDate();
@@ -103,7 +101,12 @@ function parseDate(arr){
     dateStr += "-" + d.getYear();
     return dateStr;
 };
-
+/**
+ * Calculates the time a trip took.  If less then an hour return only min
+ * @param start start time in millisec
+ * @param end end time in millisec
+ * @returns {string} time as a sting
+ */
 function parseTripLength(start,end){
     var totalSec = (end - start)/1000;
 
@@ -115,12 +118,23 @@ function parseTripLength(start,end){
         return hr + "Hr" + ":" + min + "min";
 };
 
+/**
+ * Set the google maps coordinates points by selected trip.
+ * Calls initialize to reset the coordinates to default
+ * @param id id of trip object
+ */
+
 var setCoord = function setCoord(id){
     latlong1 = new google.maps.LatLng(myTrips[id].startLatitude, myTrips[id].startLongitude);
     latlong2 = new google.maps.LatLng(myTrips[id].endLatitude, myTrips[id].endLongitude);
     initialize(latlong1,latlong2);
 };
 
+/**
+ * Generates html for rider history object
+ * @param arr   arr[i].product json object
+ * @returns {string} Html table
+ */
 function constructRiderHistory(arr) {
     var out = "";
     var i;
@@ -138,11 +152,20 @@ function constructRiderHistory(arr) {
     return out;
 };
 
+/**
+ * Sets which product is being rated and focus to the text fields
+ * @param id of product to be rated
+ */
 var modalReviewOpening = function modalReviewOpening(id){
     ratingProductId = id;
     document.getElementById('inputComment').focus()
 };
 
+/**
+ * Generates html for drivers to review
+ * @param id of driver to list reviews
+ * @returns {string} html string
+ */
 function driverProductGenerator(id){
     var reviewForProduct = document.getElementById("productWithId");
     reviewForProduct.innerHTML = "<div>  </div>";
@@ -171,12 +194,21 @@ function driverProductGenerator(id){
     return out;
 };
 
+/**
+ * Called when to populate data into the dom
+ * @param id
+ */
 function displayProductsForDriver(id){
     var constructDriverData =  document.getElementById("constructroductsListData");
     constructDriverData.innerHTML = driverProductGenerator(id);
 
 };
-
+/**
+ * Construct html for the driver table generates id's to be
+ * able to click on fiedls
+ * @param obj array of driver
+ * @returns {string} html string
+ */
 function constructDriverTable(obj){
 
     driverProductList = obj;
@@ -194,7 +226,10 @@ function constructDriverTable(obj){
 }
 
 
-
+/**
+ * Get request to get drivers
+ * Returns a callback to create the driver table
+ */
 var getDrivers = function getDrivers(){
 
     if($("#driversList").length > 0 ){
@@ -217,7 +252,13 @@ var getDrivers = function getDrivers(){
         };
     }
 };
-
+/**
+ * Post a comment to the API takes from the input fields of a modal
+ * Simple error check to check input errors.
+ * if valid post a comment to the server and recives a callback to
+ * populate the new data into the view
+ * @returns {null} if there is an error inserting values
+ */
 var postComment = function postComment(){
 
     var commentTxt =  $("#inputComment").val();
@@ -246,21 +287,36 @@ var postComment = function postComment(){
         http.onreadystatechange = function () {//Call a function when the state changes.
             if (http.readyState == 4 && http.status == 200) {
                 getReviewsByProductId(ratingProductId);
-                //TODO: There is a possibiltiy to update the dom here...
             }
         }
         http.send(JSON.stringify(toSend));
     }
 };
-
+/**
+ * Calculate radians
+ * @param Value number
+ * @returns {number} radians
+ */
 var toRad = function toRad(Value) {
-    /** Converts numeric degrees to radians */
     return Value * Math.PI / 180;
 };
+/**
+ * Calculate to degrees
+ * @param angle angle
+ * @returns {number} degrees
+ */
 var toDegrees =function toDegrees (angle) {
     return angle * (180 / Math.PI);
 };
 
+/**
+ * Calculates a midpoint between two coordinates
+ * @param lat1  lat coords
+ * @param lon1  lng coords
+ * @param lat2  lat coords
+ * @param lon2  lng coords
+ * @returns {{lat: number, lng: number}} lat lng object
+ */
 var midPoint = function midPoint(lat1,lon1,lat2,lon2){
 
     var dLon = toRad(lon2 - lon1);
@@ -281,6 +337,13 @@ var midPoint = function midPoint(lat1,lon1,lat2,lon2){
     };
 };
 
+
+/**
+ * Calculates a zoom level for google maps
+ * @param bounds google.bounds object
+ * @param mapDim size of the map to display in
+ * @returns {number} proper zoom level
+ */
 var getBoundsZoomLevel = function getBoundsZoomLevel(bounds, mapDim) {
     var WORLD_DIM = { height: 256, width: 256 };
     var ZOOM_MAX = 21;
@@ -308,7 +371,11 @@ var getBoundsZoomLevel = function getBoundsZoomLevel(bounds, mapDim) {
 
     return Math.min(latZoom, lngZoom, ZOOM_MAX);
 };
-
+/**
+ * Create the bound object for all markes
+ * @param markers point on the map
+ * @returns {google.maps.LatLngBounds}
+ */
 var createBoundsForMarkers= function createBoundsForMarkers(markers) {
     var bounds = new google.maps.LatLngBounds();
     $.each(markers, function() {
@@ -316,7 +383,11 @@ var createBoundsForMarkers= function createBoundsForMarkers(markers) {
     });
     return bounds;
 };
-
+/**
+ * initialize the google map is called every time a coordinates are calculated
+ * @param latlong1 marker for start posision
+ * @param latlong2 marker for end posision
+ */
 var initialize = function initialize(latlong1,latlong2) {
     if($("#map_canvas").length> 0){
 
@@ -341,14 +412,14 @@ var initialize = function initialize(latlong1,latlong2) {
 
         var bounds = (markers.length > 0) ? createBoundsForMarkers(markers) : null;
 
-      var mapdim = {
+        var mapdim = {
             height: 300,
             width : 550
         }
 
         mapOptions = {
             center: centerOftwoPoints,
-            zoom: (bounds) ? getBoundsZoomLevel(bounds, mapdim) : 0
+            zoom: (bounds) ? (getBoundsZoomLevel(bounds, mapdim)-1) : 0
         };
 
         map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
@@ -364,9 +435,8 @@ var initialize = function initialize(latlong1,latlong2) {
     }
 };
 
-
-
 $(function() {
+
     var map;
     $('.tripLength').hover();
 
@@ -377,6 +447,7 @@ $(function() {
     getRiderHistory();
     getDrivers();
 
+    //function to resize the map inside the modal window
     $("#purchaseModal").on("shown.bs.modal"), function(e){
         google.maps.event.trigger( map, "resize");
         map.setCenter(markerLatLng);
@@ -385,7 +456,6 @@ $(function() {
     latlong2 = new google.maps.LatLng(0,0);
 
     google.maps.event.addDomListener(window, 'load', initialize(latlong1,latlong2));
-
 
 });
 
