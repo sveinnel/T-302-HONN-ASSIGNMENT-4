@@ -22,10 +22,17 @@ import static play.libs.Json.toJson;
  * Created by emil on 25.10.2014.
  */
 public class DriverController extends UserController {
-
+    /**
+     * Access to the services defined by beans
+     */
     private static DriverService driverService = (DriverService) driverCtx.getBean("driverService");
     private static UserService userService = (UserService) userCtx.getBean("userService");
 
+    /**
+     * Gets all products form db from the db
+     * URL GET /Products
+     * @return Json array of all products
+     */
     public static Result getAllProducts()
     {
         List<ProductDTO> products = new ArrayList<>();
@@ -50,6 +57,13 @@ public class DriverController extends UserController {
             return notFound(e.getMessage());
         }
     }
+
+    /**
+     * Gets reviews by product Id
+     * GET         /products/:productid/reviews
+     * @param id integer id of a product
+     * @return json product of drivers
+     */
     public static Result getReviwsByProductId(int id)
     {
 
@@ -76,7 +90,11 @@ public class DriverController extends UserController {
         }
     }
 
-
+    /**
+     * Get all drivers from the user service only retrieves users marked as drivers
+     * URL GET         /drivers
+     * @return json drivers
+     */
     public static Result  getDrivers(){
 
         try {
@@ -96,7 +114,11 @@ public class DriverController extends UserController {
         }
     };
 
-
+    /**
+     * Add a review to the product
+     * URL POST /products/review
+     * @return the product to be added
+     */
     public static Result  addReview()
     {
         JsonNode json = request().body().asJson();
@@ -141,7 +163,10 @@ public class DriverController extends UserController {
     }
 
 
-
+    /**
+     * Render index of drivers
+     * @return html.index site
+     */
     public static Result index() {
         return ok(drivers.render("Welcome to Drivers"));
     }

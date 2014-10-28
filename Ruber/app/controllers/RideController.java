@@ -26,7 +26,11 @@ public class RideController extends UserController
     private static UserService  userService = (UserService)  userCtx.getBean("userService");
     private static DriverService driverService = (DriverService) driverCtx.getBean("driverService");
 
-
+    /**
+     * Get list of trips that the logged in user has
+     * URL GET /rider/history
+     * @return Json list of trips
+     */
     public static Result getListOfTrips() {
 
         User user =  userService.getUser(session("username"));
