@@ -47,6 +47,7 @@ function getProducts(){
         }
     };
 };
+
 function geneRateCommentsForProduct(comments){
     var out = "";
     console.log(JSON.stringify(comments,null,4));
@@ -114,18 +115,8 @@ function parseTripLength(start,end){
 };
 
 var setCoord = function setCoord(id){
-    //TODO: Add sensible data to the database and swap for dummy values And those values are out of scope
-    console.log(myTrips[id] );
-    console.log(myTrips[id].startLongitude );
-    console.log(myTrips[id].startLatitude );
-    console.log(myTrips[id].endLatitude );
-    console.log(myTrips[id].endLongitude );
-    latlong1 = new google.maps.LatLng(myTrips[id].startLongitude,myTrips[id].startLatitude );
-
-    latlong2 = new google.maps.LatLng(myTrips[id].endLongitude,myTrips[id].endLatitude );
-    //latlong2 = new google.maps.LatLng(64.133222,-21.9111);
-    // latlong1 = new google.maps.LatLng(64.133333,-21.933333);
-    //latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+    latlong1 = new google.maps.LatLng(myTrips[id].startLatitude, myTrips[id].startLongitude);
+    latlong2 = new google.maps.LatLng(myTrips[id].endLatitude, myTrips[id].endLongitude);
     initialize(latlong1,latlong2);
 };
 
@@ -145,6 +136,7 @@ function constructRiderHistory(arr) {
     }
     return out;
 };
+
 var modalReviewOpening = function modalReviewOpening(id){
     ratingProductId = id;
     document.getElementById('inputComment').focus()
@@ -176,9 +168,7 @@ function driverProductGenerator(id){
 
     }
     return out;
-}
-
-
+};
 
 function displayProductsForDriver(id){
     var constructDriverData =  document.getElementById("constructroductsListData");
@@ -187,7 +177,6 @@ function displayProductsForDriver(id){
 };
 
 function constructDriverTable(obj){
-
 
     driverProductList = obj;
     var out = "";
@@ -228,6 +217,7 @@ var getDrivers = function getDrivers(){
         };
     }
 };
+
 var postComment = function postComment(){
 
     var commentTxt =  $("#inputComment").val();
@@ -261,6 +251,7 @@ var postComment = function postComment(){
         http.send(JSON.stringify(toSend));
     }
 };
+
 var initialize = function initialize(latlong1,latlong2) {
     if($("#map_canvas").length> 0){
         mapOptions = {
@@ -302,8 +293,6 @@ $(function() {
 
     getRiderHistory();
     getDrivers();
-
-
 
     $("#purchaseModal").on("shown.bs.modal"), function(e){
         google.maps.event.trigger( map, "resize");

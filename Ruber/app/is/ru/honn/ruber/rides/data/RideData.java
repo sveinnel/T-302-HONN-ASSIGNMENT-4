@@ -8,6 +8,7 @@ import is.ruframework.data.RuData;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import play.Logger;
 
 import java.sql.*;
 
@@ -67,9 +68,9 @@ public class RideData extends RuData implements RideDataGateway {
             t.setId((Integer)a.get("id"));
             t.setProductId(Integer.parseInt(a.get("productid").toString()));
             t.setStartLongitude(Double.parseDouble(a.get("startlongitude").toString()));
-            t.setStartLongitude(Double.parseDouble(a.get("endlongitude").toString()));
-            t.setStartLongitude(Double.parseDouble(a.get("startlatitude").toString()));
-            t.setStartLongitude(Double.parseDouble(a.get("endlatitude").toString()));
+            t.setEndLongitude(Double.parseDouble(a.get("endlongitude").toString()));
+            t.setStartLatitude(Double.parseDouble(a.get("startlatitude").toString()));
+            t.setEndLatitude(Double.parseDouble(a.get("endlatitude").toString()));
             t.setDistance(Double.parseDouble(a.get("distance").toString()));
             t.setRiderId(Integer.parseInt(a.get("riderid").toString()));
             t.setStatus(Boolean.valueOf(a.get("completed").toString()) ? TripStatus.COMPLETED :null);
@@ -78,7 +79,13 @@ public class RideData extends RuData implements RideDataGateway {
             t.setEndTime(Timestamp.valueOf(a.get("endtime").toString()));
             history.addTrip(t);
         }
+        Logger.info(String.valueOf(history.getTrips().get(0).getStartLatitude()));
 
+        Logger.info(String.valueOf(history.getTrips().get(0).getStartLongitude()));
+
+        Logger.info(String.valueOf(history.getTrips().get(0).getEndLatitude()));
+
+        Logger.info(String.valueOf(history.getTrips().get(0).getEndLongitude()));
         return history;
     }
 
