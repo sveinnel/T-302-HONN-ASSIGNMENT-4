@@ -110,16 +110,16 @@ public class DriverController extends UserController {
         else
         {
             int productId;
-            int riderId;
             int rating;
             String comment;
             Review review;
+
             try
             {
+
                 productId = json.findPath("productId").asInt();
-                riderId = json.findPath("riderId").asInt();
                 rating = json.findPath("rating").asInt();
-                comment = json.findPath("comment").toString();
+                comment = json.findPath("comment").asText();
             }
             catch (Exception e)
             {
@@ -127,7 +127,7 @@ public class DriverController extends UserController {
             }
             try
             {
-                review = driverService.addReview(productId, riderId, rating, comment);
+                review = driverService.addReview(productId, userService.getUser(session("username")).getId(), rating, comment);
             }
             catch (Exception e)
             {

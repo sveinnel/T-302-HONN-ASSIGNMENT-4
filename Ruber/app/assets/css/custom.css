@@ -44,7 +44,11 @@ code {
     padding-left: 0px;
     padding-right: 0px;
 }
-
+.driverimageClip{
+    width:100px;
+    height:70px;
+    overflow:hidden;
+}
 /*Custom user form */
 
 
@@ -61,3 +65,15 @@ code {
 .user-info-block .user-body {float: left; padding: 5%; width: 90%;}
 .user-body .tab-content > div {float: left; width: 100%;}
 .user-body .tab-content h4 {width: 100%; margin: 10px 0; color: #333;}
+
+
+
+.inputCommentHeigth{
+    height: 200px;
+}
+
+.rating{
+    float:right;
+    font-size: 10px ;
+    padding-bottom: 10px;
+}
