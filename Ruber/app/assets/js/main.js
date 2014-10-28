@@ -245,6 +245,7 @@ var postComment = function postComment(){
 
         http.onreadystatechange = function () {//Call a function when the state changes.
             if (http.readyState == 4 && http.status == 200) {
+                getReviewsByProductId(ratingProductId);
                 //TODO: There is a possibiltiy to update the dom here...
             }
         }
@@ -380,8 +381,8 @@ $(function() {
         google.maps.event.trigger( map, "resize");
         map.setCenter(markerLatLng);
     };
-    latlong1 = new google.maps.LatLng(64.133333,-21.933333);
-    latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+    latlong1 = new google.maps.LatLng(0,0);
+    latlong2 = new google.maps.LatLng(0,0);
 
     google.maps.event.addDomListener(window, 'load', initialize(latlong1,latlong2));
 
