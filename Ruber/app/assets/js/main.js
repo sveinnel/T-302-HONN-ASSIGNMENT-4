@@ -2,8 +2,8 @@
 var driverProductList = [];
 
 var ratingProductId = -1;
-var latlong1 = "";
-var latlong2 = "";
+var latlong1 = {};
+var latlong2 = {};
 
 var myTrips = {};
 var getRiderHistory =function(){
@@ -206,7 +206,7 @@ var getDrivers = function getDrivers(){
 
     if($("#driversList").length > 0 ){
         var xmlhttp = new XMLHttpRequest();
-        var url = "/driverss";
+        var url = "/drivers";
         xmlhttp.open('GET',url,true);
         xmlhttp.send(null);
         xmlhttp.onreadystatechange = function() {
@@ -226,8 +226,6 @@ var getDrivers = function getDrivers(){
     }
 };
 var postComment = function postComment(){
-
-
 
     var commentTxt =  $("#inputComment").val();
     var rating =  $("#inputRating").val();
@@ -254,10 +252,40 @@ var postComment = function postComment(){
 
         http.onreadystatechange = function () {//Call a function when the state changes.
             if (http.readyState == 4 && http.status == 200) {
-                //TODO: Update the dom
+                //TODO: There is a possibiltiy to update the dom here...
             }
         }
         http.send(JSON.stringify(toSend));
+    }
+};
+var initialize = function initialize() {
+    if($("#map_canvas").length> 0){
+        mapOptions = {
+            center: { lat:  64.133333, lng: -21.933333},
+            zoom: 10
+        };
+        latlong1 = new google.maps.LatLng(64.133333,-21.933333);
+        latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+
+        var firstMarker = new google.maps.Marker({
+            position: latlong1,
+            title:"Start"});
+
+        var secondMarker = new google.maps.Marker({
+            position: latlong2,
+            title:"End"});
+
+        map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+        firstMarker.setMap(map);
+        secondMarker.setMap(map);
+
+
+
+        $("#purchaseModal").on("shown.bs.modal", function(e) {
+            google.maps.event.trigger(map, "resize");
+            return map.setCenter(mapOptions.center);
+        });
+
     }
 };
 
@@ -274,35 +302,6 @@ $(function() {
     getRiderHistory();
     getDrivers();
 
-    function initialize() {
-        if($("#map_canvas").length> 0){
-            mapOptions = {
-                center: { lat:  64.133333, lng: -21.933333},
-                zoom: 10
-            };
-            latlong1 = new google.maps.LatLng(64.133333,-21.933333);
-            latlong2 = new google.maps.LatLng(64.133222,-21.9111);
-            var firstMarker = new google.maps.Marker({
-                position: latlong1,
-                title:"Start"});
-
-            var secondMarker = new google.maps.Marker({
-                position: latlong2,
-                title:"End"});
-
-            map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
-            firstMarker.setMap(map);
-            secondMarker.setMap(map);
-
-
-
-            $("#purchaseModal").on("shown.bs.modal", function(e) {
-                google.maps.event.trigger(map, "resize");
-                return map.setCenter(mapOptions.center);
-            });
-
-        }
-    };
 
 
     $("#purchaseModal").on("shown.bs.modal"), function(e){
