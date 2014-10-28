@@ -153,7 +153,7 @@ function driverProductGenerator(id){
 
     var driverName = document.getElementById("nameOfDriver");
     driverName.innerHTML =driverProductList[id].user.firstName
-        + " " + driverProductList[id].user.lastName+ " cars";
+        + " " + driverProductList[id].user.lastName+ " car";
 
     var out = "";
     var i = 0;
