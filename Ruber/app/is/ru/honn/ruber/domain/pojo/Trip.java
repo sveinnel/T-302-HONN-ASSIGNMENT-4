@@ -44,7 +44,7 @@ public class Trip
         this.endTime = endTime;
     }
 
-    //TODO: implement Product getter from DB based on product id
+
     public Trip(int id, int productId, Timestamp requestTime, Timestamp startTime, Timestamp endTime, float startlongitude, float endLongiTude, float startLatitude, float endLatitude, float distance, boolean completed, int riderId) {
         this.id = id;
         this.requestTime = requestTime;
