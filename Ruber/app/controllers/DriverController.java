@@ -78,13 +78,10 @@ public class DriverController extends UserController {
 
 
     public static Result  getDrivers(){
-        Logger.info("BLABLALBALBLBA");
+
         try {
             List<User> users = userService.getDrivers();
-          //  Logger.info(users.get(0).getLastName());
-            Logger.info("BLABLALBALBLBA2");
-            Logger.info(users.get(0).getEmail());
-            Logger.info(String.valueOf(users.get(0).getId()));
+
             List<DriverDTO> drivers = new ArrayList<>();
 
             for (User u : users) {

@@ -51,7 +51,7 @@ function getProducts(){
 
 function geneRateCommentsForProduct(comments){
     var out = "";
-    console.log(JSON.stringify(comments,null,4));
+
     var totalRating = 0;
     for(var j = 0; j < comments.length; j++) {
         totalRating += comments[j].rating;
@@ -79,7 +79,7 @@ function geneRateCommentsForProduct(comments){
 
 var getReviewsByProductId = function getReviewsByProductId(id){
     var xmlhttp = new XMLHttpRequest();
-    var url = "/product/"+id+"/reviews";
+    var url = "/products/"+id+"/reviews";
     xmlhttp.open('GET',url,true);
     xmlhttp.send(null);
     xmlhttp.onreadystatechange = function() {
@@ -211,7 +211,6 @@ var getDrivers = function getDrivers(){
                     constructDriverData.innerHTML =toReturn;
                 }
                 else{
-                    alert("Error ->" + xmlhttp.responseText);
                     console.log(xmlhttp.responseText)
                 }
             }
@@ -239,7 +238,7 @@ var postComment = function postComment(){
         return null;
     }else {
         var http = new XMLHttpRequest();
-        var url = " /product/review";
+        var url = " /products/review";
         http.open("POST", url, true);
 
         http.setRequestHeader("Content-type", "application/json");
@@ -252,13 +251,14 @@ var postComment = function postComment(){
         http.send(JSON.stringify(toSend));
     }
 };
+
 var toRad = function toRad(Value) {
     /** Converts numeric degrees to radians */
     return Value * Math.PI / 180;
 };
 var toDegrees =function toDegrees (angle) {
     return angle * (180 / Math.PI);
-}
+};
 
 var midPoint = function midPoint(lat1,lon1,lat2,lon2){
 
@@ -279,6 +279,7 @@ var midPoint = function midPoint(lat1,lon1,lat2,lon2){
         lng : toDegrees(lon3)
     };
 };
+
 var getBoundsZoomLevel = function getBoundsZoomLevel(bounds, mapDim) {
     var WORLD_DIM = { height: 256, width: 256 };
     var ZOOM_MAX = 21;
@@ -306,6 +307,7 @@ var getBoundsZoomLevel = function getBoundsZoomLevel(bounds, mapDim) {
 
     return Math.min(latZoom, lngZoom, ZOOM_MAX);
 };
+
 var createBoundsForMarkers= function createBoundsForMarkers(markers) {
     var bounds = new google.maps.LatLngBounds();
     $.each(markers, function() {
@@ -313,6 +315,7 @@ var createBoundsForMarkers= function createBoundsForMarkers(markers) {
     });
     return bounds;
 };
+
 var initialize = function initialize(latlong1,latlong2) {
     if($("#map_canvas").length> 0){
 

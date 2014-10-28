@@ -79,13 +79,6 @@ public class RideData extends RuData implements RideDataGateway {
             t.setEndTime(Timestamp.valueOf(a.get("endtime").toString()));
             history.addTrip(t);
         }
-        Logger.info(String.valueOf(history.getTrips().get(0).getStartLatitude()));
-
-        Logger.info(String.valueOf(history.getTrips().get(0).getStartLongitude()));
-
-        Logger.info(String.valueOf(history.getTrips().get(0).getEndLatitude()));
-
-        Logger.info(String.valueOf(history.getTrips().get(0).getEndLongitude()));
         return history;
     }
 
