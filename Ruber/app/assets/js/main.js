@@ -9,6 +9,7 @@ var myTrips = {};
 
 /**
  * Returns rider history object only returns if a user is signed in.
+ * adds the rider history to the dom
  */
 var getRiderHistory =function(){
     if($("#tripHistory").length >0){
