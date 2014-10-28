@@ -1,3 +1,7 @@
+/*
+ * @(#)DriverController.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import is.ru.honn.ruber.domain.dto.DriverDTO;
@@ -19,9 +23,13 @@ import java.util.List;
 import static play.libs.Json.toJson;
 
 /**
- * Created by emil on 25.10.2014.
+ * Driver Controller handles requests related to drivers
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
  */
 public class DriverController extends UserController {
+
     /**
      * Access to the services defined by beans
      */
@@ -117,7 +125,7 @@ public class DriverController extends UserController {
     /**
      * Add a review to the product
      * URL POST /products/review
-     * @return the product to be added
+     * @return Result the product to be added
      */
     public static Result  addReview()
     {

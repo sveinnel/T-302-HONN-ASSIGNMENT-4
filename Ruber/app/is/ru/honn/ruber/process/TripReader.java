@@ -1,3 +1,7 @@
+/*
+ * @(#)TripReader.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.process;
 
 
@@ -14,6 +18,13 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.logging.Logger;
 
+/**
+ * Class for parsing trips in Json format
+ * to Pojo's
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
+ */
 public class TripReader
 {
   TripHandler handler;

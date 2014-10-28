@@ -1,6 +1,9 @@
+/*
+ * @(#)UserData.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.users.data;
 
-import is.ru.honn.ruber.domain.pojo.Trip;
 import is.ru.honn.ruber.domain.pojo.User;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UsernameExistsException;
@@ -12,6 +15,12 @@ import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 
 import java.util.*;
 
+/**
+ * Data Gateway for users to database
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
+ */
 public class UserData extends RuData implements UserDataGateway
 {
   public int addUser(User user)

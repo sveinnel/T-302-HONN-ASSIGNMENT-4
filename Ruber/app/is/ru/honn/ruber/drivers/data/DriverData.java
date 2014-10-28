@@ -1,3 +1,7 @@
+/*
+ * @(#)DriverData.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.drivers.data;
 
 import is.ru.honn.ruber.domain.pojo.Price;
@@ -16,7 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by sveinn on 25.10.2014.
+ * Data Gateway for drivers to database
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
  */
 public class DriverData extends RuData implements DriverDataGateway
 {

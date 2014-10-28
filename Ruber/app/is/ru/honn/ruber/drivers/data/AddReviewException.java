@@ -1,7 +1,15 @@
+/*
+ * @(#)AddReviewException.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
+
 package is.ru.honn.ruber.drivers.data;
 
 /**
- * Created by sveinn on 25.10.2014.
+ * Exception that is thrown when error adding review
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
  */
 public class AddReviewException extends Exception
 {

@@ -1,3 +1,7 @@
+/*
+ * @(#)RideController.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package controllers;
 
 import is.ru.honn.ruber.domain.dto.ProductDTO;
@@ -18,7 +22,10 @@ import java.util.logging.Logger;
 import static play.libs.Json.toJson;
 
 /**
- * Created by emil on 25.10.2014.
+ * Ride Controller handles requests related to rides
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
  */
 public class RideController extends UserController
 {

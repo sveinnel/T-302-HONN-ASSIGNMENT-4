@@ -1,14 +1,21 @@
+/*
+ * @(#)UserServiceData.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.users.service;
 
-
-import is.ru.honn.ruber.domain.pojo.Trip;
 import is.ru.honn.ruber.users.data.UserDataGateway;
 import is.ru.honn.ruber.domain.pojo.User;
-
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * Data Service for users to database
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
+ */
 public class UserServiceData implements UserService
 {
 

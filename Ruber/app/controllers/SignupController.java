@@ -1,18 +1,24 @@
+/*
+ * @(#)SignupController.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package controllers;
-
 
 import is.ru.honn.ruber.domain.UserRegistration;
 import is.ru.honn.ruber.users.service.UserNotFoundException;
 import is.ru.honn.ruber.users.service.UserService;
 import play.mvc.*;
 import play.data.*;
-
 import views.html.signup;
 import views.html.summary;
-
 import static play.data.Form.*;
 
-
+/**
+ * Signup Controller handles signup requests
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
+ */
 public class SignupController extends UserController
 {
   final static Form<UserRegistration> signupForm = form(UserRegistration.class);

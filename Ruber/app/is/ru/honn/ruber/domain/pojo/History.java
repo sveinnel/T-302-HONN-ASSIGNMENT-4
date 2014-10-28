@@ -1,8 +1,17 @@
+/*
+ * @(#)History.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.domain.pojo;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Pojo Class holding history of trips
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
+ */
 public class History
 {
   protected int offset;

@@ -1,3 +1,7 @@
+/*
+ * @(#)RideServiceData.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.rides.service;
 
 import is.ru.honn.ruber.domain.pojo.History;
@@ -5,7 +9,12 @@ import is.ru.honn.ruber.domain.pojo.Trip;
 import is.ru.honn.ruber.rides.data.RideDataGateway;
 
 /**
- * Created by emil on 24.10.2014.
+ * Service for data gateway
+ * implements connection to
+ * data storages
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
  */
 public class RideServiceData implements RidesService {
 

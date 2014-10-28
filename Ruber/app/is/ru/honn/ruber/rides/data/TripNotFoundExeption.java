@@ -1,7 +1,15 @@
+/*
+ * @(#)TripNotFoundException.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.rides.data;
 
 /**
- * Created by emil on 24.10.2014.
+ * Exception that is thrown when
+ * trip is not found in database
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
  */
 public class TripNotFoundExeption extends RuntimeException {
     public TripNotFoundExeption()

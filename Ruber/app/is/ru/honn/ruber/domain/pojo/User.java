@@ -1,7 +1,17 @@
+/*
+ * @(#)User.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.domain.pojo;
 
 import java.util.Date;
 
+/**
+ * Pojo Class holding one User (Both drivers and riders)
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
+ */
 public class User
 {
     private int id;
@@ -13,6 +23,10 @@ public class User
     private Date registered;
     private boolean driver;
 
+    /**
+     * Returns true if user is a driver
+     * @return boolean
+     */
     public boolean isDriver()
     {
         return driver;

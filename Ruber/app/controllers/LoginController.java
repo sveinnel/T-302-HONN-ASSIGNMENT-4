@@ -1,3 +1,8 @@
+/*
+ * @(#)DriverController.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
+
 package controllers;
 
 
@@ -12,6 +17,12 @@ import static play.data.Form.form;
 import views.html.index;
 import views.html.login;
 
+/**
+ * Login Controller handles login requests
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
+ */
 public class LoginController extends UserController
 {
   final static Form<User> loginForm = form(User.class);

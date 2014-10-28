@@ -1,10 +1,17 @@
+/*
+ * @(#)ProductDTO.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.domain.dto;
 
 import is.ru.honn.ruber.domain.pojo.Price;
 import is.ru.honn.ruber.domain.pojo.User;
 
 /**
- * Created by sveinn on 26.10.2014.
+ * DTO class used for sending Product to client
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
  */
 public class ProductDTO
 {

@@ -1,3 +1,7 @@
+/*
+ * @(#)DriverDTO.java 0.1 28. Oct 2014 Sveinn Elmar Magnússon & Emil Ellegaard
+ * Copyright (c) Sveinn Elmar Magnússon & Emil Ellegaard.
+ */
 package is.ru.honn.ruber.domain.dto;
 
 import is.ru.honn.ruber.domain.pojo.Product;
@@ -6,7 +10,10 @@ import is.ru.honn.ruber.domain.pojo.User;
 import java.util.List;
 
 /**
- * Created by emil on 26.10.2014.
+ * DTO class used for sending Driver to client
+ * @author Sveinn Elmar Magnússon
+ * @author Emil Atli Ellegaard
+ * @version 0.1, 28.Oct 2014
  */
 public class DriverDTO {
     private User user;
