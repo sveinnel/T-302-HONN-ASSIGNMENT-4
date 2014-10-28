@@ -49,7 +49,7 @@ function geneRateCommentsForProduct(comments){
     console.log(JSON.stringify(comments,null,4));
     var totalRating = 0;
     for(var j = 0; j < comments.length; j++) {
-       totalRating += comments[j].rating;
+        totalRating += comments[j].rating;
     }
 
     if(comments.length > 0){
@@ -82,8 +82,7 @@ var getReviewsByProductId = function getReviewsByProductId(id){
         if (xmlhttp.readyState == 4) {
             if ( xmlhttp.status == 200) {
                 var obj = (JSON.parse(xmlhttp.responseText));
-                console.log(obj);
-               geneRateCommentsForProduct(obj);
+                geneRateCommentsForProduct(obj);
             }
             else{
                 console.log("Error ->" + xmlhttp.responseText);
@@ -138,7 +137,7 @@ function driverProductGenerator(id){
 
     var driverName = document.getElementById("nameOfDriver");
     driverName.innerHTML =driverProductList[id].user.firstName
-                          + " " + driverProductList[id].user.lastName+ " cars";
+        + " " + driverProductList[id].user.lastName+ " cars";
 
     var out = "";
     var i = 0;
@@ -154,14 +153,7 @@ function driverProductGenerator(id){
         out += "<tr>";
         out += "<td> <button class='btn btn-default btn-sm' onclick='getReviewsByProductId("+(id+1)+")'>Display Reviews</button></td>";
         out += "<td> <button type='button' class='btn btn-default btn-sm' data-toggle='modal' onClick='modalReviewOpening("+driverProductList[id].product[i].id+")'  data-target='#purchaseModal'>Add a review</button></td>";
-
-
-
-
-
         out += "</tr>";
-
-
 
     }
     return out;
@@ -221,6 +213,9 @@ var getDrivers = function getDrivers(){
     }
 };
 var postComment = function postComment(){
+
+
+
     var commentTxt =  $("#inputComment").val();
     var rating =  $("#inputRating").val();
     var toSend = {
@@ -229,26 +224,28 @@ var postComment = function postComment(){
         "comment" : commentTxt
     };
 
-    console.log(commentTxt);
-    console.log(rating);
-
-    console.log("Rating product  no : " +(ratingProductId));
-
-    var http = new XMLHttpRequest();
-    var url =" /product/review";
-    http.open("POST", url, true);
-
-   http.setRequestHeader("Content-type","application/json");
-//Send the proper header information along with the request
-    console.log(toSend);
-    console.log(JSON.stringify(toSend));
-    http.onreadystatechange = function() {//Call a function when the state changes.
-        if(http.readyState == 4 && http.status == 200) {
-
-        }
+    if(parseInt(rating) > 5 || parseInt(rating) < 0  )
+    {
+        alert("Rating is between 0 and 5 !");
+        return null;
     }
-    http.send(JSON.stringify(toSend));
+    else if(rating.length <= 0){
+        alert("There must be a comment ");
+        return null;
+    }else {
+        var http = new XMLHttpRequest();
+        var url = " /product/review";
+        http.open("POST", url, true);
 
+        http.setRequestHeader("Content-type", "application/json");
+
+        http.onreadystatechange = function () {//Call a function when the state changes.
+            if (http.readyState == 4 && http.status == 200) {
+                //TODO: Update the dom
+            }
+        }
+        http.send(JSON.stringify(toSend));
+    }
 };
 
 
@@ -261,17 +258,18 @@ $(function() {
         $('#welcomeMessage').fadeOut('slow');
     }, 1000);
 
-    $('#purchaseModal').on('hidden', function () {
-        console.log("My modal is hidden ");
-
-    });
-
-
     getRiderHistory();
     getDrivers();
 
-
-
+    function initialize() {
+        var mapOptions = {
+            center: { lat: -34.397, lng: 150.644},
+            zoom: 8
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+    };
+    google.maps.event.addDomListener(window, 'load', initialize);
+    console.log("running ");
 
 });
 
