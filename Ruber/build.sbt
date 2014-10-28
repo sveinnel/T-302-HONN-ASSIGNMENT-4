@@ -1,4 +1,4 @@
-name := """RuBook"""
+name := """Ruber"""
 
 version := "1.0-SNAPSHOT"
 
