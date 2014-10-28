@@ -77,3 +77,7 @@ code {
     font-size: 10px ;
     padding-bottom: 10px;
 }
+#map_canvas{
+    width : 400px;
+    height: 300px;
+}

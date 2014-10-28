@@ -2,8 +2,10 @@
 var driverProductList = [];
 
 var ratingProductId = -1;
+var latlong1 = "";
+var latlong2 = "";
 
-
+var myTrips = {};
 var getRiderHistory =function(){
     if($("#tripHistory").length >0){
         var xmlhttp = new XMLHttpRequest();
@@ -16,6 +18,7 @@ var getRiderHistory =function(){
             if (xmlhttp.readyState == 4) {
                 if ( xmlhttp.status == 200) {
                     var obj = (JSON.parse(xmlhttp.responseText));
+                    myTrips = obj;
                     var toReturn = constructRiderHistory(obj);
                     constructRiderTable.innerHTML =toReturn;
                 }
@@ -110,6 +113,18 @@ function parseTripLength(start,end){
         return hr + "Hr" + ":" + min + "min";
 };
 
+var setCoord = function setCoord(id){
+    //TODO: Add sensible data to the database and swap for dummy values And those values are out of scope
+    console.log(myTrips[id] );
+    console.log(myTrips[id].startLongitude );
+    console.log(myTrips[id].startLatitude );
+    console.log(myTrips[id].endLatitude );
+    console.log(myTrips[id].endLongitude );
+    latlong1 = new google.maps.LatLng(myTrips[id].startLongitude,myTrips[id].startLatitude );
+    latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+   // latlong1 = new google.maps.LatLng(64.133333,-21.933333);
+    latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+};
 
 function constructRiderHistory(arr) {
     var out = "";
@@ -122,6 +137,7 @@ function constructRiderHistory(arr) {
         out += "<td>"+ arr[i].distance +" KM</td>" ;
         out += "<td class='tripLength'>"+parseTripLength(arr[i].startTime, arr[i].endTime) +"  </td>" ;
         out += "<td>" + arr[i].product.driver.firstName + " " + arr[i].product.driver.lastName + "</td>" ;
+        out += "<td> <button type='button' class='btn btn-default btn-sm' data-toggle='modal'  data-target='#purchaseModal' onclick='setCoord("+i+")'>Display trip map</button></td>";
         out += "</tr>"
     }
     return out;
@@ -162,11 +178,8 @@ function driverProductGenerator(id){
 
 
 function displayProductsForDriver(id){
-
     var constructDriverData =  document.getElementById("constructroductsListData");
     constructDriverData.innerHTML = driverProductGenerator(id);
-
-
 
 };
 
@@ -251,7 +264,7 @@ var postComment = function postComment(){
 
 
 $(function() {
-
+    var map;
     $('.tripLength').hover();
 
     setTimeout(function() {
@@ -262,14 +275,42 @@ $(function() {
     getDrivers();
 
     function initialize() {
-        var mapOptions = {
-            center: { lat: -34.397, lng: 150.644},
-            zoom: 8
-        };
-        var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+        if($("#map_canvas").length> 0){
+            mapOptions = {
+                center: { lat:  64.133333, lng: -21.933333},
+                zoom: 10
+            };
+            latlong1 = new google.maps.LatLng(64.133333,-21.933333);
+            latlong2 = new google.maps.LatLng(64.133222,-21.9111);
+            var firstMarker = new google.maps.Marker({
+                position: latlong1,
+                title:"Start"});
+
+            var secondMarker = new google.maps.Marker({
+                position: latlong2,
+                title:"End"});
+
+            map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+            firstMarker.setMap(map);
+            secondMarker.setMap(map);
+
+
+
+            $("#purchaseModal").on("shown.bs.modal", function(e) {
+                google.maps.event.trigger(map, "resize");
+                return map.setCenter(mapOptions.center);
+            });
+
+        }
+    };
+
+
+    $("#purchaseModal").on("shown.bs.modal"), function(e){
+        google.maps.event.trigger( map, "resize");
+        map.setCenter(markerLatLng);
     };
     google.maps.event.addDomListener(window, 'load', initialize);
-    console.log("running ");
+
 
 });
 
