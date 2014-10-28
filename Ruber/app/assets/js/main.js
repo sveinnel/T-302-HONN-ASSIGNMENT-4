@@ -50,7 +50,7 @@ function geneRateCommentsForProduct(comments){
         totalRating /= comments.length;
         out += "<span>Total rating : " + totalRating.toString().substr(0,3) + "</span>";
     }else{
-        out += "This driver is unrated";
+        out += "This driver has no reviews";
     }
 
     for(var i = 0; i < comments.length; i++) {
